@@ -17,6 +17,7 @@ export default class RegistrationForm extends Component {
       .then(user => {
         user_name.value = ''
         password.value = ''
+        this.props.handleRegistrationSuccess()
       })
       .catch(res => {
         this.setState({ error: res.error })
@@ -33,7 +34,7 @@ export default class RegistrationForm extends Component {
           </span>
           <span>
             <h3>Password</h3>
-            <input name='password' type='text' required id='registration_form__password' />
+            <input name='password' type='password' required id='registration_form__password' />
           </span>
           <br/>
           <button type="submit">
