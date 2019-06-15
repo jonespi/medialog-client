@@ -2,15 +2,20 @@ import React, { Component } from 'react'
 import MovieDBService from '../Service/MovieDBService'
 import SearchResults from '../SearchResults/SearchResults'
 import './AddMoviePage.css'
+import Service from '../Service/Service';
 
 class AddMovie extends Component {
   state = {
     isLoaded: false,
+    isValid: false,
     endpoint: 'movie',
     results: [],
+    movieTitle: '',
+    date: '',
+    recommend: 'recommend'
   }
 
-  handleSubmit = ev => {
+  handleSearch = ev => {
     ev.preventDefault()
     const { add_search } = ev.target
       MovieDBService.getMovies(add_search.value)
@@ -25,11 +30,46 @@ class AddMovie extends Component {
       })
   }
 
+  updateMovieSelection = (movie) => {
+    this.setState({
+      movieTitle: JSON.parse(movie)
+    }, this.validateSubmit)
+  }
+
+  updateRecommendation = (e) => {
+    this.setState({
+      recommend: e.target.value 
+    }, this.validateSubmit)
+  }
+
+  updateDate = (e) => {
+    this.setState({
+      date: e.target.value 
+    }, this.validateSubmit)
+  }
+
+  validateSubmit = (name) => {
+    if (this.state.movieTitle !== '' && this.state.date !== '' && this.state.recommend !== '') {
+      this.setState({
+        isValid: true
+      })
+    }
+  }
+
+  handleAdd() {
+    const movie = {
+      title: this.state.movieTitle,
+      recommend: this.state.recommend,
+      dateWatched: this.state.date
+    }
+    Service.AddMovie(movie);
+  }
+
   render() {
     return (
       <div>
         <h3>Add Movie</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSearch}>
           <span>
             <h3>Search</h3>
             <input name='add_search' type='text' required id='add_page___search' />
@@ -41,16 +81,16 @@ class AddMovie extends Component {
         </form>
 
         {this.state.isLoaded && 
-          <form className="results">
+          <form className='results-form' onSubmit={this.handleAdd}>
             <div>
-              <SearchResults results={this.state.results} />
+              <SearchResults results={this.state.results} change={this.updateMovieSelection} className='results' />
             </div>
-            <select name="recommendation">
+            <select name="recommendation" onChange={this.updateRecommendation}>
               <option value="recommended">recommended</option>
               <option value="do-not-recommend">do not recommend</option>
             </select>
-            <input type="date" className="form-control" id="date" name="date"></input>
-            <button>
+            <input type="date" className="form-control" id="date" name="date" onChange={this.updateDate}></input>
+            <button type="submit" disabled={!this.state.isValid}>
               <h2>Add movie</h2>
             </button>
           </form>

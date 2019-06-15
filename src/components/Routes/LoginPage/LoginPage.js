@@ -10,9 +10,9 @@ export default class LoginPage extends Component {
   }
 
   handleLoginSuccess = () => {
-    const { location, history } = this.props
-    const destination = (location.state || {}).from || '/'
-    history.push(destination)
+    const { history } = this.props
+    history.push('/add')
+    window.location.reload()
   }
 
   render() {
