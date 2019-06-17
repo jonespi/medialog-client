@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import RegistrationForm from '../../RegistrationForm/RegistrationForm'
+import './RegistrationPage.css'
 
 export default class RegistrationPage extends Component {
   static defaultProps = {
@@ -15,7 +16,7 @@ export default class RegistrationPage extends Component {
 
   render() {
     return (
-      <section>
+      <section className="registration_page">
         <h2>Register</h2>
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}

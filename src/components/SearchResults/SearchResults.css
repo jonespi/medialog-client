@@ -1,8 +1,11 @@
 .search_results_ul {
+  padding: 0;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 0;
   flex-direction: row;
   list-style-type: none;
 }
@@ -12,9 +15,9 @@
 }
 
 .result_img {
-  width: 200px
+  width: 150px
 }
 
 .movie_result {
-  max-width: 200px;
+  max-width: 150px;
 }

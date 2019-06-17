@@ -25,9 +25,9 @@ export default class WatchedList extends Component {
 
   render() {
     return (
-      <section className='watched_list'>
+      <section className='watch_page'>
         <h2>Watched List</h2>
-        <ul className='watch_list_ul'>
+        <ul className='watch_page__ul'>
           {this.state.isLoaded && this.state.results.map(movie => {
             return <WatchedMovie movie={movie}/>
           })}

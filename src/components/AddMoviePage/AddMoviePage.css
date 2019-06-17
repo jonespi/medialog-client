@@ -4,9 +4,20 @@
   text-align: center
 }
 
-.results-form {
+.results_form {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1024px;
   margin-top: 50px;
+}
+
+.results_form__context {
+  margin-top: -50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 
 .results {

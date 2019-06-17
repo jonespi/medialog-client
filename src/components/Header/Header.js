@@ -43,7 +43,7 @@ export default class Header extends Component {
   }
 
   render() {
-    return <>
+    return <div className="nav_container">
       <nav className='Header'>
         <div className='left-header'>
           <h1>
@@ -59,6 +59,6 @@ export default class Header extends Component {
             : this.renderLoginLink()}
         </div>
       </nav>
-    </>
+    </div>
   }
 }
