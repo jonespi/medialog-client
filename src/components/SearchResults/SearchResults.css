@@ -1,3 +1,20 @@
+.search_results_ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.search_results_ul li {
+  margin: 5px
+}
+
 .result_img {
   width: 200px
+}
+
+.movie_result {
+  max-width: 200px;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import TokenService from '../Service/TokenService';
+import './Header.css'
 
 export default class Header extends Component {
   handleLogoutClick = () => {
@@ -44,15 +45,19 @@ export default class Header extends Component {
   render() {
     return <>
       <nav className='Header'>
-        <h1>
-          <Link to='/'>
-            MediaLog
-          </Link>
-        </h1>
-        <span className='tagline'>Whatcha watchin?</span>
-        {TokenService.hasAuthToken() 
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
+        <div className='left-header'>
+          <h1>
+            <Link to='/'>
+              MediaLog
+            </Link>
+          </h1>
+          <span className='tagline'>Whatcha watchin?</span>
+        </div>
+        <div className='right-header'>
+          {TokenService.hasAuthToken() 
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
+        </div>
       </nav>
     </>
   }

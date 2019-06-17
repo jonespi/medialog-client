@@ -1,0 +1,8 @@
+.landing_page {
+  text-align: center;
+  display: flex;
+  width: 1024px;
+  max-width: 100%;
+  justify-content: center;
+  flex-direction: column;
+}

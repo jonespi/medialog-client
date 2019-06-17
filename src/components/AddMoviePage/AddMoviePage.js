@@ -10,9 +10,9 @@ class AddMovie extends Component {
     isValid: false,
     endpoint: 'movie',
     results: [],
-    movieTitle: '',
+    movie: {},
     date: '',
-    recommend: 'recommend'
+    recommendation: 'recommend'
   }
 
   handleSearch = ev => {
@@ -21,7 +21,7 @@ class AddMovie extends Component {
       MovieDBService.getMovies(add_search.value)
       .then(res => {
         this.setState({
-          results: res.results.slice(0, 5),
+          results: res.results.slice(0, 8),
           isLoaded: true
         })
       })
@@ -32,7 +32,7 @@ class AddMovie extends Component {
 
   updateMovieSelection = (movie) => {
     this.setState({
-      movieTitle: JSON.parse(movie)
+      movie: JSON.parse(movie)
     }, this.validateSubmit)
   }
 
@@ -56,18 +56,24 @@ class AddMovie extends Component {
     }
   }
 
-  handleAdd() {
+  handleAdd = (e) => {
+    e.preventDefault()
     const movie = {
-      title: this.state.movieTitle,
-      recommend: this.state.recommend,
-      dateWatched: this.state.date
+      title: this.state.movie.title,
+      image: this.state.movie.image,
+      url: this.state.movie.url,
+      date_watched: this.state.date,
+      recommendation: this.state.recommendation
     }
     Service.AddMovie(movie);
+    setTimeout(() => {
+      this.props.history.push('/watch_list/')
+    }, 500) 
   }
 
   render() {
     return (
-      <div>
+      <section className='add_movie_page'>
         <h3>Add Movie</h3>
         <form onSubmit={this.handleSearch}>
           <span>
@@ -82,20 +88,18 @@ class AddMovie extends Component {
 
         {this.state.isLoaded && 
           <form className='results-form' onSubmit={this.handleAdd}>
-            <div>
-              <SearchResults results={this.state.results} change={this.updateMovieSelection} className='results' />
-            </div>
             <select name="recommendation" onChange={this.updateRecommendation}>
               <option value="recommended">recommended</option>
               <option value="do-not-recommend">do not recommend</option>
             </select>
             <input type="date" className="form-control" id="date" name="date" onChange={this.updateDate}></input>
+            <SearchResults results={this.state.results} change={this.updateMovieSelection} className='results' />
             <button type="submit" disabled={!this.state.isValid}>
               <h2>Add movie</h2>
             </button>
           </form>
         }
-      </div>
+      </section>
     )
   }
 }

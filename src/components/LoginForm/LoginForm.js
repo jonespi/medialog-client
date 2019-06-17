@@ -9,6 +9,7 @@ export default class LoginForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
+    this.setState({ error: null})
     const {user_name, password} = ev.target;
     AuthApiService.postLogin({
       user_name: user_name.value,
@@ -22,16 +23,17 @@ export default class LoginForm extends Component {
         this.props.onLoginSuccess();
       })
       .catch(res => {
-        this.setState({ error: res.error})
+        this.setState({ error: res.error })
       })
   }
 
   render() {
     return (
-      <div>
+      <section className="login_form">
         <form onSubmit={this.handleSubmit}>
           <span>
             <h3>Username</h3>
+            {this.state.error && <p>{this.state.error}</p>}
             <input name='user_name' type='text' required id='login_form__user_name' />
           </span>
           <span>
@@ -43,7 +45,7 @@ export default class LoginForm extends Component {
             <h2>Submit</h2>
           </button>
         </form>
-      </div>
+      </section>
     )
   }
 }

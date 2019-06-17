@@ -2,8 +2,8 @@ import config from '../../config'
 import TokenService from './TokenService'
 
 const Service = {
-  postWatchList(movie) {
-    return fetch(`${config.API_ENDPOINT}/movie`, {
+  AddMovie(movie) {
+    return fetch(`${config.API_ENDPOINT}/watch_list`, {
       method: 'POST',
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -19,12 +19,7 @@ const Service = {
   },
 
   getWatchList() {
-    const user_id = TokenService.getAuthToken()
-    const payload = user_id.payload
-
-    console.log('user_id', user_id.payload);
-
-    return fetch(`${config.API_ENDPOINT}/watch_list/${user_id}`, {
+    return fetch(`${config.API_ENDPOINT}/watch_list`, {
       method: 'GET',
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,

@@ -1,3 +1,9 @@
+.add_movie_page {
+  display: flex;
+  flex-direction: column;
+  text-align: center
+}
+
 .results-form {
   text-align: center;
   margin-top: 50px;

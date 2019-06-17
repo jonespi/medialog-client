@@ -1,0 +1,18 @@
+.watched_list {
+  width: 100%;
+  text-align: center;
+}
+
+.watch_list_ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.watch_list_ul li {
+  margin: 5px;
+  text-align: center
+}
