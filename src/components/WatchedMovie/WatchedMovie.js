@@ -4,9 +4,13 @@ export default function WatchedMovie(props) {
   const movie = props.movie
   return (
     <li key={movie.id}>
-      <img className='result_img' src={props.movie.image} />
-      <br />
-      <a href={movie.url}>{movie.title}</a>
+      <a href={movie.url}>
+        <img className='result_img' src={props.movie.image} alt={`${props.movie.title} poster`} />
+        <br />
+        {movie.title}
+      </a>
+      <br/>
+      <button onClick={() => props.delete(movie.id)}>Delete</button>
     </li>
   )
 }

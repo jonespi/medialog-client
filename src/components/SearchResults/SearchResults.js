@@ -15,7 +15,7 @@ class SearchResults extends Component {
 
             return (
               <li key={result.id} className="movie_result">
-                <label for={`movie_${result.id}`}> <img className='result_img' src={movie.image} />
+                <label> <img className='result_img' src={movie.image} alt={`${movie.title} poster`} />
                 <br />
                 <input name="movies" value={JSON.stringify(movie)} type="radio" id={`movie_${result.id}`} required onChange={e => this.props.change(e.target.value)}  />
                 {movie.title}
