@@ -18,6 +18,21 @@ const Service = {
       )
   },
 
+  deleteMovie(id) {
+    return fetch(`${config.API_ENDPOINT}/watch_list/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json',
+      }
+    })
+      .then(res => {
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      })
+  },
+
   getWatchList() {
     return fetch(`${config.API_ENDPOINT}/watch_list`, {
       method: 'GET',

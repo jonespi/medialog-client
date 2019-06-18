@@ -7,7 +7,7 @@ import {Route, Switch} from 'react-router-dom';
 import LandingPage from '../Routes/LandingPage/LandingPage'
 import RegistrationPage from '../Routes/RegistrationPage/RegistrationPage'
 import LoginPage from '../Routes/LoginPage/LoginPage'
-import AddMoviePage from '../AddMoviePage/AddMoviePage'
+import AddMoviePage from '../Routes/AddMoviePage/AddMoviePage'
 import WatchedPage from '../Routes/WatchedPage/WatchedPage'
 
 function App() {

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import MovieDBService from '../Service/MovieDBService'
-import SearchResults from '../SearchResults/SearchResults'
+import MovieDBService from '../../Service/MovieDBService'
+import SearchForm from '../../SearchForm/SearchForm'
+import SearchResults from '../../SearchResults/SearchResults'
 import './AddMoviePage.css'
-import Service from '../Service/Service';
+import Service from '../../Service/Service';
 
 class AddMovie extends Component {
   state = {
@@ -71,18 +72,16 @@ class AddMovie extends Component {
     }, 500) 
   }
 
+  renderDateInput() {
+    let now = new Date();
+    let minDate = now.toISOString().substring(0,10);
+    return <input type="date" className="form-control" id="date" name="date" onChange={this.updateDate} max={minDate} defaultValue={minDate} />
+  }
+
   render() {
     return (
       <section className='add_movie_page'>
-        <section className='add_movie__search_form'>
-          <h3>Add Movie</h3>
-          <form onSubmit={this.handleSearch}>
-            <span>
-              <input name='add_search' type='text' required id='add_page___search' />
-              <button>Search</button>
-            </span>
-          </form>
-        </section>
+        <SearchForm handleSearch={this.handleSearch} />
 
         {this.state.isLoaded && 
           <form className='results_form' onSubmit={this.handleAdd}>
@@ -96,10 +95,10 @@ class AddMovie extends Component {
               </label>
               <label>
                 <p>Date watched:</p>
-                <input type="date" className="form-control" id="date" name="date" onChange={this.updateDate}/>
+                {this.renderDateInput()}
               </label>
               <button type="submit" disabled={!this.state.isValid}>
-                <h3>Add movie</h3>
+                Add movie
               </button>
             </div>
             <SearchResults results={this.state.results} change={this.updateMovieSelection} className='results' />

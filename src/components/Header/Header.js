@@ -5,8 +5,10 @@ import './Header.css'
 
 export default class Header extends Component {
   handleLogoutClick = () => {
-    TokenService.clearAuthToken()
-    window.location.reload()
+    if (window.confirm('Are you sure you wish to log out?')) {
+      TokenService.clearAuthToken()
+      window.location.reload()
+    }
   }
 
   renderLogoutLink() {
