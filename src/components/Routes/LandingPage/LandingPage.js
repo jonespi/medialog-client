@@ -7,7 +7,7 @@ export default class LandingPage extends Component {
     return (
       <section className="landing_page">
         <h1>MediaLog</h1>
-        <p>MediaLog is your movie diary. Track the movies that you have watched most recently so you can follow what you're watching!</p>
+        <p>MediaLog is your movie diary. Track the movies that you have watched most recently so you can log what you're watching!</p>
         <div className="landing_page_buttons">
           <Link to={'/register'}>
             <button>Register</button>

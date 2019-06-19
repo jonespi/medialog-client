@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './SearchResults.css'
 
-class SearchResults extends Component {
+export default class SearchResults extends Component {
   render() {
     return (
       <fieldset>
@@ -28,5 +28,3 @@ class SearchResults extends Component {
     )
   }
 }
-
-export default SearchResults

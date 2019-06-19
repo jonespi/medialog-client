@@ -17,9 +17,5 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-bottom: 20px;
-}
-
-.results {
-  display: flex;
+  margin-bottom: 15px;
 }

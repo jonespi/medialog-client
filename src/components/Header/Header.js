@@ -14,8 +14,11 @@ export default class Header extends Component {
   renderLogoutLink() {
     return (
       <div className='Header__logged-in'>
-        <Link to='/add'>
-          <button>Add</button>
+        <Link to='/add_movie'>
+          <button>Add Movie</button>
+        </Link>
+        <Link to='/add_show'>
+          <button>Add Show</button>
         </Link>
         <Link to='/watch_list'>
           <button>Watch List</button>

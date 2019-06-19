@@ -12,7 +12,7 @@ export default class LoginPage extends Component {
 
   handleLoginSuccess = () => {
     const { history } = this.props
-    history.push('/add')
+    history.push('/watch_list')
     window.location.reload()
   }
 

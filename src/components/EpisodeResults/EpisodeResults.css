@@ -1,0 +1,9 @@
+.episode_results__ul {
+  padding: 0;
+  text-align: left;
+  list-style-type: none;
+}
+
+.episode_results__ul li {
+  text-align: left;
+}
