@@ -19,9 +19,9 @@ export default class WatchedList extends Component {
       this.setState({
         isLoaded: false,
       })
-      Service.deleteMovie(id)
+      Service.deleteMedia(id)
       .then(() => {
-        this.getMovies()
+        this.getResults()
       })
     }
   }
