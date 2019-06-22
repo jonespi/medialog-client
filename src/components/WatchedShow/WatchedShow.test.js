@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Router} from 'react-router-dom'
-import Header from './Header'
+import WatchedShow from './WatchedShow'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(
-    <BrowserRouter>
-      <Header />
-    </BrowserRouter>
-    , div);
+  ReactDOM.render(<WatchedShow show={{}} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

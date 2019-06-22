@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import './SearchResults.css'
 
 export default class SearchResults extends Component {
+  static defaultProps = {
+    results: [],
+  }
+
   render() {
     return (
       <fieldset>

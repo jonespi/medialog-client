@@ -6,7 +6,7 @@ export default function AddShowForm(props) {
   <>
     <TvShowResults results={props.results} change={props.updateTvSelection} className='search_results' />
     <form className='results_form' onSubmit={props.getSeasons}>
-      <button type="submit">
+      <button type="submit" disabled={!props.showIsValid}>
         Get Seasons
       </button>
     </form>

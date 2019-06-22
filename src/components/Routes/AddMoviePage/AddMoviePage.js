@@ -98,7 +98,7 @@ class AddMovie extends Component {
           <AddMovieForm 
             handleAdd={this.handleAdd}
             updateRecommendation={this.updateRecommendation}
-            renderDateInput={this.renderDateInput}
+            updateDate={this.updateDate}
             getDate={this.getDate}
             isValid={this.state.isValid}
             results={this.state.results}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AuthApiService from '../Service/AuthApiService';
+import './RegistrationForm.css'
 
 export default class RegistrationForm extends Component {
   state = { 
@@ -36,11 +37,12 @@ export default class RegistrationForm extends Component {
           </span>
           <span>
             <h3>Password</h3>
+            <p>Password must have a capital letter, a number, and a special character (!@#$%^&)</p>
             <input name='password' type='password' required id='registration_form__password' />
           </span>
           <br/>
           <button type="submit">
-            <h2>Submit</h2>
+            Submit
           </button>
         </form>
       </section>

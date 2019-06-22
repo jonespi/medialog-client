@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthApiService from '../Service/AuthApiService';
 import TokenService from '../Service/TokenService';
+import './LoginForm.css'
 
 export default class LoginForm extends Component {
   state = {
@@ -42,7 +43,7 @@ export default class LoginForm extends Component {
           </span>
           <br/>
           <button>
-            <h2>Submit</h2>
+            Submit
           </button>
         </form>
       </section>

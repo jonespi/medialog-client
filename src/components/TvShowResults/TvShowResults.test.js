@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Router} from 'react-router-dom'
-import Header from './Header'
+import TvShowResults from './TvShowResults'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(
-    <BrowserRouter>
-      <Header />
-    </BrowserRouter>
-    , div);
+  ReactDOM.render(<TvShowResults />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -7,7 +7,7 @@ export default class Header extends Component {
   handleLogoutClick = () => {
     if (window.confirm('Are you sure you wish to log out?')) {
       TokenService.clearAuthToken()
-      window.location.reload()
+      window.location.reload();
     }
   }
 
@@ -15,7 +15,9 @@ export default class Header extends Component {
     return (
       <div className='Header__logged-in'>
         <Link to='/add_movie'>
-          <button>Add Movie</button>
+          <button>
+            Add Movie
+          </button>
         </Link>
         <Link to='/add_show'>
           <button>Add Show</button>
@@ -51,11 +53,11 @@ export default class Header extends Component {
     return <div className="nav_container">
       <nav className='Header'>
         <div className='left-header'>
-          <h1>
-            <Link to='/'>
+          <Link to='/'>
+            <h1>
               MediaLog
-            </Link>
-          </h1>
+            </h1>
+          </Link>
           <span className='tagline'>Whatcha watchin?</span>
         </div>
         <div className='right-header'>

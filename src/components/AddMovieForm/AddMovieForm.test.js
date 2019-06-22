@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Router} from 'react-router-dom'
-import Header from './Header'
+import AddMovieForm from './AddMovieForm';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(
-    <BrowserRouter>
-      <Header />
-    </BrowserRouter>
-    , div);
+  ReactDOM.render(<AddMovieForm  getDate={()=>{}} renderDateInput={()=>{}} results={[]} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

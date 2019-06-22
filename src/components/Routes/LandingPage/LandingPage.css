@@ -4,4 +4,23 @@
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+.landing_page_buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.landing_page_buttons button {
+  font-size: 1.1rem;
+  width: 125px;
+  height: 80px;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 420px) {
+  .landing_page {
+    margin-top: 50%;
+  }
 }

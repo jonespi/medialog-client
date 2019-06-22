@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default function AddShowForm(props) {
-  return  <form className='results_form' onSubmit={props.handleAdd}>
-    <div className='results_form__context'>
+  return  <form className='show_results_form' onSubmit={props.handleAdd}>
+    <div className='show_results_form__context'>
       <div>
         <p>Recommended?</p>
         <select name="recommendation" onChange={props.updateRecommendation}>
@@ -12,7 +12,7 @@ export default function AddShowForm(props) {
       </div>
       <div>
         <p>Date watched:</p>
-        {props.renderDateInput(props.getDate())}
+        <input type="date" className="form-control" id="date" name="date" onChange={props.updateDate} max={props.getDate()} defaultValue={props.getDate()} />
       </div>
     </div>
     <button type="submit" disabled={!props.isValid}>
