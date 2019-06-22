@@ -2,8 +2,8 @@ import React from 'react'
 import SearchResults from '../SearchResults/SearchResults'
 
 export default function AddMovieForm(props) {
-  return  <form className='results_form' onSubmit={props.handleAdd}>
-    <div className='results_form__context'>
+  return  <form className='movie_results_form' onSubmit={props.handleAdd}>
+    <div className='movie_results_form__context'>
       <div>
         <p>Recommended?</p>
         <select name="recommendation" onChange={props.updateRecommendation}>
@@ -13,7 +13,7 @@ export default function AddMovieForm(props) {
       </div>
       <div>
         <p>Date watched:</p>
-        {props.renderDateInput(props.getDate())}
+        <input type="date" className="form-control" id="date" name="date" onChange={props.updateDate} max={props.getDate()} defaultValue={props.getDate()} />
       </div>
     </div>
     <button type="submit" disabled={!props.isValid}>

@@ -19,3 +19,23 @@ nav {
   display: flex;
   flex-direction: column;
 }
+
+.left-header a {
+  text-decoration: none;
+}
+
+.left-header a:hover {
+  color: black;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 425px) {
+  .left-header {
+    display: none;
+  }
+
+  .Header {
+    display: flex;
+    flex-direction: column;
+  }
+}

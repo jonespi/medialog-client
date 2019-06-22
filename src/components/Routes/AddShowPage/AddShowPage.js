@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import Service from '../../Service/Service'
 import MovieDBService from '../../Service/MovieDBService'
 import SearchForm from '../../SearchForm/SearchForm'
-import SelectShowForm from '../../SearchForm/SelectShowForm'
+import SelectShowForm from '../../SelectShowForm/SelectShowForm'
 import EpisodeResults from '../../EpisodeResults/EpisodeResults'
 import AddShowForm from '../../AddShowForm/AddShowForm';
+import './AddShowPage.css'
 
 class AddShow extends Component {
   state = {
     isLoaded: false,
     isValid: false,
+    showIsValid: false,
     endpoint: 'tv',
     show: {},
     num_of_seasons: null,
@@ -49,7 +51,8 @@ class AddShow extends Component {
 
   updateTvSelection = (show) => {
     this.setState({
-      show: JSON.parse(show)
+      show: JSON.parse(show),
+      showIsValid: true
     }, this.validateSubmit)
   }
 
@@ -91,10 +94,6 @@ class AddShow extends Component {
         seasonsLoaded: true
       })
     })
-  }
-
-  renderDateInput(minDate) {
-    return <input type="date" className="form-control" id="date" name="date" onChange={this.updateDate} max={minDate} defaultValue={minDate} />
   }
 
   renderSeasonButtons = (num_of_seasons) => {
@@ -146,7 +145,7 @@ class AddShow extends Component {
 
   render() {
     return (
-      <section className='add_movie_page'>
+      <section className='add_show_page'>
         <h3>Add Show</h3>
         <SearchForm handleSearch={this.handleSearch} />
 
@@ -155,6 +154,7 @@ class AddShow extends Component {
             getSeasons={this.getSeasons}
             results={this.state.results}
             updateTvSelection={this.updateTvSelection}
+            showIsValid={this.state.showIsValid}
             />
         }
 
@@ -162,12 +162,11 @@ class AddShow extends Component {
           <div>
             {this.renderSeasonButtons(this.state.num_of_seasons)}
           </div>
-          
         }
 
         {this.state.episodesLoaded && 
-          <div>
-            <EpisodeResults 
+          <div className='add_show_page__episode_results' >
+            <EpisodeResults
               episodes={this.state.episodes} 
               updateEpisodeSelection={this.updateEpisodeSelection} />
             <AddShowForm 
@@ -176,6 +175,7 @@ class AddShow extends Component {
               isValid={this.state.isValid}
               renderDateInput={this.renderDateInput}
               getDate={this.getDate}
+              updateDate={this.updateDate}
               />
           </div>
         }

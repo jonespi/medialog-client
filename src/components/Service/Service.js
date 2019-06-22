@@ -18,7 +18,7 @@ const Service = {
       )
   },
 
-  deleteMovie(id) {
+  deleteMedia(id) {
     return fetch(`${config.API_ENDPOINT}/watch_list/${id}`, {
       method: 'DELETE',
       headers: {

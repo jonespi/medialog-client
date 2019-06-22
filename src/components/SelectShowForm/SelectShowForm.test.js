@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Router} from 'react-router-dom'
-import Header from './Header'
+import SelectShowForm from './SelectShowForm'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(
-    <BrowserRouter>
-      <Header />
-    </BrowserRouter>
-    , div);
+  ReactDOM.render(<SelectShowForm results={[]} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
