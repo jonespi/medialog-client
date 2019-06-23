@@ -4,6 +4,8 @@ fieldset {
 
 .movie_results_form .search_results_ul {
   padding: 0;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -11,8 +13,8 @@ fieldset {
   list-style-type: none;
 }
 
-.search_results_ul li {
-  margin: 10px
+.movie_result {
+  margin: 10px 15px;
 }
 
 .result_img {
@@ -25,18 +27,23 @@ fieldset {
 }
 
 @media only screen and (max-width: 425px) {
-
   .search_results_ul {
     height: 425px;
     flex-wrap: nowrap;
     overflow: scroll;
   }
 
-  .search_results_ul li {
-    margin: 10px 7.5px;
+  .result_img, .movie_result, .show_result {
+    width: 100px;
   }
 
-  .result_img, .movie_result, .show_result {
-    width: 125px;
+  .show_result {
+    margin: 10px 10px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .movie_result {
+    margin: 10px 2px;
   }
 }
