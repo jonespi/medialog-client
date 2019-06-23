@@ -17,6 +17,10 @@ export default class SearchResults extends Component {
               "image": `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}`
             }
 
+            if (!result.poster_path) {
+              movie.image = 'https://picsum.photos/200/300'
+            }
+
             return (
               <li key={result.id} className="movie_result">
                 <label> <img className='result_img' src={movie.image} alt={`${movie.title} poster`} />

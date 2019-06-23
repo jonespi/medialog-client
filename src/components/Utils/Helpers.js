@@ -12,6 +12,13 @@ const Helpers = {
     let date = date_watched.substring(0,10).split('/')[0].split('-')
     return date[0];
   },
+
+  getMonth(date_watched) {
+    let date = new Date(date_watched)
+    let options = {month: 'long'}
+    let newdate = new Intl.DateTimeFormat('en-us', options).format(date)
+    return newdate;
+  }  
 }
 
 export default Helpers

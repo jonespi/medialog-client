@@ -18,6 +18,10 @@ export default class TvShowResults extends Component {
               image: `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}`
             }
 
+            if (!result.poster_path) {
+              show.image = 'https://picsum.photos/200/300'
+            }
+
             return (
               <li key={result.id} className="show_result">
                 <label> 

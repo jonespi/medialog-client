@@ -2,9 +2,8 @@ fieldset {
   margin-top: 20px;
 }
 
-.search_results_ul {
+.movie_results_form .search_results_ul {
   padding: 0;
-  width: 90%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -25,4 +24,14 @@ fieldset {
 
 .movie_result {
   max-width: 125px;
+}
+
+@media only screen and (max-width: 375px) {
+  .result_img, .movie_result, .show_result, .watch_page__ul li {
+    width: 120px;
+  }
+
+  .watch_page__ul li {
+    margin: 5px 20px;
+  }
 }

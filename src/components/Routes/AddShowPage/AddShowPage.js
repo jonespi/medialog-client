@@ -64,7 +64,7 @@ class AddShow extends Component {
 
   updateRecommendation = (e) => {
     this.setState({
-      recommend: e.target.value 
+      recommendation: e.target.value 
     }, this.validateSubmit)
   }
 
@@ -137,7 +137,6 @@ class AddShow extends Component {
       recommendation: this.state.recommendation
     }
     Service.AddMedia(show);
-    console.log('this ran')
     setTimeout(() => {
       this.props.history.push('/watch_list/')
     }, 500) 

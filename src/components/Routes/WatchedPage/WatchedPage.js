@@ -35,7 +35,7 @@ export default class WatchedList extends Component {
     Service.getWatchList()
       .then(res => {
         this.setState({
-          results: res
+          results: res.reverse()
         })
       })
       .then(() => {
@@ -48,9 +48,7 @@ export default class WatchedList extends Component {
 
   getMonths(results) {
     let months = results.reduce((acc, media) => {
-      let date = new Date(media.date_watched)
-      let options = {month: 'long'}
-      let newdate = new Intl.DateTimeFormat('en-us', options).format(date)
+      let newdate = Helpers.getMonth(media.date_watched);
       acc.push(newdate);
       return acc;
     }, [])
@@ -108,6 +106,7 @@ export default class WatchedList extends Component {
     } else {   
       this.setState({
         isFiltered: true,
+        monthFilter: true,
         isLoaded: false,
         filteredResults: filteredMonths
       })
@@ -126,6 +125,7 @@ export default class WatchedList extends Component {
     } else {   
       this.setState({
         isFiltered: true,
+        yearFilter: true,
         isLoaded: false,
         filteredResults: filteredYears
       })
@@ -134,7 +134,7 @@ export default class WatchedList extends Component {
 
   filterRecommendations = (e) => {
     const selectedRecommendation = e.target.value;
-    const filteredMonths = this.state.results.filter(result => result.recommendation === selectedRecommendation);
+    const filteredRecommendation = this.state.results.filter(result => result.recommendation === selectedRecommendation);
     if (selectedRecommendation === 'All') {
       this.setState({
         isFiltered: false,
@@ -144,8 +144,9 @@ export default class WatchedList extends Component {
     } else {   
       this.setState({
         isFiltered: true,
+        recommendFilter: true,
         isLoaded: false,
-        filteredResults: filteredMonths
+        filteredResults: filteredRecommendation
       })
     }
   }
