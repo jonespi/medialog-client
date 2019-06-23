@@ -14,10 +14,6 @@ fieldset {
   list-style-type: none;
 }
 
-.search_results_ul li {
-  margin: 5px
-}
-
 .show_result {
   max-width: 125px;
 }

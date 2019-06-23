@@ -29,5 +29,45 @@
 
 .watch_page__ul li {
   text-align: center;
-  max-width: 150px
+  max-width: 100%;
+  width: 125px;
+  margin: 15px 5px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.watch_page li {
+  margin: 15px 25px;
+}
+
+.watch_page__ul li p {
+  margin: 0;
+  font-size: .6rem;
+}
+
+.watch_page__ul li h3 {
+  margin: 0;
+  font-size: .8rem;
+}
+
+.watch_page__ul li a {
+  text-decoration: none;
+}
+
+.watch_page__ul li a:hover {
+  color: #C0B283;
+}
+
+.watch_page__ul li button {
+  align-self: center;
+  width: 50%;
+  font-size: .3rem;
+}
+
+@media only screen and (max-width: 425px) {
+  .watch_page__ul {
+    height: 600px;
+    overflow: scroll;
+  }
 }

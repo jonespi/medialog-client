@@ -18,7 +18,7 @@ const Helpers = {
     let options = {month: 'long'}
     let newdate = new Intl.DateTimeFormat('en-us', options).format(date)
     return newdate;
-  }  
+  },
 }
 
 export default Helpers

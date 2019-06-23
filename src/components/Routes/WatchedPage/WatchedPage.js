@@ -50,7 +50,7 @@ export default class WatchedList extends Component {
     let months = results.reduce((acc, media) => {
       let newdate = Helpers.getMonth(media.date_watched);
       acc.push(newdate);
-      return acc;
+      return acc.sort((a,b) => a < b);
     }, [])
     return [...new Set(months)]
   }
@@ -61,7 +61,7 @@ export default class WatchedList extends Component {
       acc.push(Helpers.getYears(date));
       return acc;
     }, [])
-    return [...new Set(years)]
+    return [...new Set(years)].sort()
   }
 
   renderMonthsSelect(results) {
@@ -69,7 +69,7 @@ export default class WatchedList extends Component {
     return (
       <select onChange={this.filterResultsMonths}>
         <option>All</option>
-        {months.map(month => <option>{month}</option>)}
+        {months.map(month => <option key={month}>{month}</option>)}
       </select>
     )
   }
@@ -79,7 +79,7 @@ export default class WatchedList extends Component {
     return (
       <select onChange={this.filterResultsYears}>
         <option>All</option>
-        {years.map(year => <option>{year}</option>)}
+        {years.map(year => <option key={year}>{year}</option>)}
       </select>
     )
   }

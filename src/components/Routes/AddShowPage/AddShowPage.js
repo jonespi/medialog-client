@@ -41,7 +41,9 @@ class AddShow extends Component {
       .then(res => {
         this.setState({
           results: res.results.slice(0, 10),
-          isLoaded: true
+          isLoaded: true,
+          seasonsLoaded: false,
+          episodesLoaded: false
         })
       })
       .catch(res => {
@@ -91,6 +93,7 @@ class AddShow extends Component {
     .then(res => {
       this.setState({
         num_of_seasons: res.number_of_seasons,
+        isLoaded: false,
         seasonsLoaded: true
       })
     })
@@ -99,15 +102,13 @@ class AddShow extends Component {
   renderSeasonButtons = (num_of_seasons) => {
     let buttons = [];
     for (let i = 1; i <= num_of_seasons; i++) {
-      buttons.push({
-        number: i
-      })
+      buttons.push({ number: i});
     }
     return buttons.map(season => {
       return (
-        <button key={season.number} onClick={(id, season_num) => this.renderSeasonEpisodes(this.state.show.moviedb_id, season.number)}>
-          Season {season.number}
-        </button>
+          <button key={season.number} onClick={(id, season_num) => this.renderSeasonEpisodes(this.state.show.moviedb_id, season.number)}>
+            Season {season.number}
+          </button>
         )
     })
   }
@@ -146,7 +147,8 @@ class AddShow extends Component {
     return (
       <section className='add_show_page'>
         <h3>Add Show</h3>
-        <SearchForm handleSearch={this.handleSearch} />
+        {(!this.state.isLoaded || !this.state.seasonsLoaded) &&
+        <SearchForm handleSearch={this.handleSearch} />}
 
         {this.state.isLoaded && 
           <SelectShowForm 
@@ -158,7 +160,7 @@ class AddShow extends Component {
         }
 
         {this.state.seasonsLoaded &&
-          <div>
+          <div className="season_buttons">
             {this.renderSeasonButtons(this.state.num_of_seasons)}
           </div>
         }
@@ -168,16 +170,18 @@ class AddShow extends Component {
             <EpisodeResults
               episodes={this.state.episodes} 
               updateEpisodeSelection={this.updateEpisodeSelection} />
-            <AddShowForm 
-              updateRecommendation={this.updateRecommendation} 
-              handleAdd={this.handleAdd} 
-              isValid={this.state.isValid}
-              renderDateInput={this.renderDateInput}
-              getDate={this.getDate}
-              updateDate={this.updateDate}
-              />
           </div>
         }
+
+        {(this.state.episodesLoaded && !this.state.isLoaded) && 
+          <AddShowForm 
+            updateRecommendation={this.updateRecommendation} 
+            handleAdd={this.handleAdd} 
+            isValid={this.state.isValid}
+            renderDateInput={this.renderDateInput}
+            getDate={this.getDate}
+            updateDate={this.updateDate}
+          />}
 
       </section>
     )

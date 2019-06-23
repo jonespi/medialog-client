@@ -12,9 +12,9 @@ export default function EpisodeResults(props) {
               episode_name: result.name
             }
             return (
-                <li>
+                <li key={result.id}>
                   <label>
-                  <input name="episode" value={JSON.stringify(episode)} type="radio" id={`episode_${result.id}`} onChange={e => props.updateEpisodeSelection(e.target.value)} required  />
+                  <input name="episode" value={JSON.stringify(episode)} type="radio" id={`episode_${result.id}`} onChange={e => props.updateEpisodeSelection(e.target.value)} required />
                     {episode.episode_name}
                   </label>
                 </li>
