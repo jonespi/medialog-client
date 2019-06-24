@@ -27,6 +27,7 @@ class AddShow extends Component {
   getDate() {
     let now = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
     let minDate = now.substring(0,9).split('/')
+    // Hack to get the date default to current day in PST
     if (minDate[0].length > 1) {
       return [minDate[2], minDate[0], minDate[1]].join('-');  
     } else {
@@ -178,8 +179,7 @@ class AddShow extends Component {
             updateRecommendation={this.updateRecommendation} 
             handleAdd={this.handleAdd} 
             isValid={this.state.isValid}
-            renderDateInput={this.renderDateInput}
-            getDate={this.getDate}
+            // getDate={this.getDate}
             updateDate={this.updateDate}
           />}
 

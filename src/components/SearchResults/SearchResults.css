@@ -27,9 +27,15 @@ fieldset {
 }
 
 @media only screen and (max-width: 425px) {
-  .search_results_ul {
-    height: 425px;
-    flex-wrap: nowrap;
+  .add_show_page fieldset {
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  .movie_results_form fieldset {
+    height: 400px;
     overflow: scroll;
   }
 

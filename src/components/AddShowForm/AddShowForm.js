@@ -20,3 +20,7 @@ export default function AddShowForm(props) {
     </button>
   </form>
 }
+
+AddShowForm.defaultProps = {
+  getDate: () => {}
+}

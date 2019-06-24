@@ -9,26 +9,16 @@ export default class WatchedList extends Component {
   state = {
     isLoaded: false,
     isFiltered: false,
+    monthFilter: false,
     selectedMonth: '',
     selectedYear: '',
+    selectedRecommendation: '',
     results: [],
     filteredResults: []
   }
 
   componentDidMount() {
     this.getResults()
-  }
-
-  deleteMedia = (id) => {
-    if (window.confirm('Are you sure you wish to delete this item?')) {
-      this.setState({
-        isLoaded: false,
-      })
-      Service.deleteMedia(id)
-      .then(() => {
-        this.getResults()
-      })
-    }
   }
 
   getResults = () => {
@@ -46,13 +36,33 @@ export default class WatchedList extends Component {
       .catch(err => console.log(err.error))
   }
 
+  deleteMedia = (id) => {
+    if (window.confirm('Are you sure you wish to delete this item?')) {
+      this.setState({
+        isLoaded: false,
+      })
+      Service.deleteMedia(id)
+      .then(() => {
+        this.getResults()
+      })
+    }
+  }
+
   getMonths(results) {
     let months = results.reduce((acc, media) => {
-      let newdate = Helpers.getMonth(media.date_watched);
-      acc.push(newdate);
-      return acc.sort((a,b) => a < b);
+      // create object containing month number and month name, push object into array
+      let month = {
+        monthNum : Helpers.getMonthNum(media.date_watched),
+        monthName : Helpers.getMonthName(media.date_watched)
+      }
+      acc.push(month)
+      // sort the months by month number (i.e. 'January' === 0)
+      acc.sort((a, b) => a.monthNum - b.monthNum)
+      return acc
     }, [])
-    return [...new Set(months)]
+    // create a new array only containing month names
+    let uniqueMonths = months.map(month => month.monthName)
+    return [...new Set(uniqueMonths)]
   }
 
   getYears(results) {
@@ -62,6 +72,84 @@ export default class WatchedList extends Component {
       return acc;
     }, [])
     return [...new Set(years)].sort()
+  }
+
+  filterMediaType = (e) => {
+    const selectedType = e.target.value;
+    const filteredType = this.state.results.filter(result => result.media_type === selectedType.toLowerCase());
+     this.setState({
+      isFiltered: true,
+      selectedType: selectedType,
+      filteredResults: filteredType
+    })
+    if (selectedType === 'All') {
+      this.setState({
+        isFiltered: false,
+        selectedType: '',
+        isLoaded: true,
+      })
+    }
+  }
+
+  filterResultsMonths = (e) => {
+    const selectedMonth = e.target.value;
+    const filteredMonths = this.state.results.filter(result => Helpers.getMonthName(result.date_watched) === selectedMonth);
+     this.setState({
+      isFiltered: true,
+      selectedMonth: selectedMonth,
+      filteredResults: filteredMonths
+    })
+    if (selectedMonth === 'All') {
+      this.setState({
+        isFiltered: false,
+        selectedMonth: '',
+        isLoaded: true,
+      })
+    }
+  }
+
+  filterResultsYears = (e) => {
+    const selectedYear = e.target.value;
+    const filteredYears = this.state.results.filter(result => Helpers.getYears(result.date_watched) === selectedYear);
+    this.setState({
+      isFiltered: true,
+      selectedYear: selectedYear,
+      filteredResults: filteredYears,
+    })
+    if (selectedYear === 'All') {
+      this.setState({
+        isFiltered: false,
+        selectedMonth: '',
+        isLoaded: true,
+      })
+    }
+  }
+
+  filterRecommendations = (e) => {
+    const selectedRecommendation = e.target.value;
+    const filteredRecommendation = this.state.results.filter(result => result.recommendation === selectedRecommendation);
+    this.setState({
+        isFiltered: true,
+        recommendFilter: true,
+        isLoaded: false,
+        filteredResults: filteredRecommendation
+      })
+    if (selectedRecommendation === 'All') {
+      this.setState({
+        isFiltered: false,
+        selectedMonth: '',
+      })
+    }
+  }
+
+  renderTypeSelect() {
+    return (
+      <select onChange={this.filterMediaType}>
+        <option>All</option>
+        <option>Movie</option>
+        <option>Tv</option>
+      </select>
+    )
   }
 
   renderMonthsSelect(results) {
@@ -94,75 +182,20 @@ export default class WatchedList extends Component {
     )
   }
 
-  filterResultsMonths = (e) => {
-    const selectedMonth = e.target.value;
-    const filteredMonths = this.state.results.filter(result => Helpers.getMonth(result.date_watched) === selectedMonth);
-    if (selectedMonth === 'All') {
-      this.setState({
-        isFiltered: false,
-        isLoaded: true,
-        filteredResults: []
-      })
-    } else {   
-      this.setState({
-        isFiltered: true,
-        monthFilter: true,
-        isLoaded: false,
-        filteredResults: filteredMonths
-      })
-    }
-  }
-
-  filterResultsYears = (e) => {
-    const selectedYear = e.target.value;
-    const filteredYears = this.state.results.filter(result => Helpers.getYears(result.date_watched) === selectedYear);
-    if (selectedYear === 'All') {
-      this.setState({
-        isFiltered: false,
-        isLoaded: true,
-        filteredResults: []
-      })
-    } else {   
-      this.setState({
-        isFiltered: true,
-        yearFilter: true,
-        isLoaded: false,
-        filteredResults: filteredYears
-      })
-    }
-  }
-
-  filterRecommendations = (e) => {
-    const selectedRecommendation = e.target.value;
-    const filteredRecommendation = this.state.results.filter(result => result.recommendation === selectedRecommendation);
-    if (selectedRecommendation === 'All') {
-      this.setState({
-        isFiltered: false,
-        isLoaded: true,
-        filteredResults: []
-      })
-    } else {   
-      this.setState({
-        isFiltered: true,
-        recommendFilter: true,
-        isLoaded: false,
-        filteredResults: filteredRecommendation
-      })
-    }
-  }
-
   render() {
     return (
       <section className='watch_page'>
         <h2>Watched List</h2>
+        <p>Filter By</p>
         <div className="watch_page__select_filters">
+          <p>Type: {this.renderTypeSelect(this.state.results)}</p>
           <p>Month: {this.renderMonthsSelect(this.state.results)}</p>
           <p>Year: {this.renderYearsSelect(this.state.results)}</p>
-          <p>Recommendation: {this.renderRecommendSelect(this.state.results)}</p>
+          <p>Recommend: {this.renderRecommendSelect(this.state.results)}</p>
         </div>
 
         <ul className='watch_page__ul'>
-          {this.state.isLoaded && this.state.results.map(media => {
+          {!this.state.isFiltered && this.state.results.map(media => {
             if (media.media_type === 'movie') { 
               return (
                 <WatchedMovie key={media.id} movie={media} delete={this.deleteMedia}/>

@@ -1,7 +1,7 @@
 .landing_page {
   text-align: center;
-  width: 1024px;
-  max-width: 100%;
+  width: 550px;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Poppins', sans-serif;
@@ -21,6 +21,12 @@
 
 @media only screen and (max-width: 420px) {
   .landing_page {
-    margin-top: 50%;
+    margin-top: 25%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .landing_page {
+    margin-top: 30%;
   }
 }

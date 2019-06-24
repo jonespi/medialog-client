@@ -13,7 +13,12 @@ const Helpers = {
     return date[0];
   },
 
-  getMonth(date_watched) {
+  getMonthNum(date_watched) {
+    let date = new Date(date_watched);
+    return date.getMonth()
+  },
+
+  getMonthName(date_watched) {
     let date = new Date(date_watched)
     let options = {month: 'long'}
     let newdate = new Intl.DateTimeFormat('en-us', options).format(date)
