@@ -77,7 +77,6 @@ class AddMovie extends Component {
       date_watched: this.state.date,
       recommendation: this.state.recommendation
     }
-    console.log(movie)
     Service.AddMedia(movie);
     setTimeout(() => {
       this.props.history.push('/watch_list/')

@@ -1,9 +1,22 @@
 .episode_results__ul {
   padding: 0;
-  text-align: left;
+  width: 100%;
   list-style-type: none;
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .episode_results__ul li {
   text-align: left;
+}
+
+@media only screen and (max-width: 425px) {
+  .episode_results__ul {
+    flex-wrap: nowrap;
+    overflow: scroll;
+    justify-content: flex-start;
+  }
 }

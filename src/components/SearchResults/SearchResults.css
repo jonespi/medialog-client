@@ -2,9 +2,8 @@ fieldset {
   margin-top: 20px;
 }
 
-.search_results_ul {
+.movie_results_form .search_results_ul {
   padding: 0;
-  width: 90%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -14,8 +13,8 @@ fieldset {
   list-style-type: none;
 }
 
-.search_results_ul li {
-  margin: 5px
+.movie_result {
+  margin: 10px 15px;
 }
 
 .result_img {
@@ -25,4 +24,32 @@ fieldset {
 
 .movie_result {
   max-width: 125px;
+}
+
+@media only screen and (max-width: 425px) {
+  .add_show_page fieldset {
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  .movie_results_form fieldset {
+    height: 400px;
+    overflow: scroll;
+  }
+
+  .result_img, .movie_result, .show_result {
+    width: 100px;
+  }
+
+  .show_result {
+    margin: 10px 10px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .movie_result {
+    margin: 10px 2px;
+  }
 }

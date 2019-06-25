@@ -11,11 +11,11 @@ export default function LandingPage() {
         <p>username - medialog</p>
         <p>pw - P@ssw0rd</p>
         <div className="landing_page_buttons">
-          <Link to={'/register'}>
-            <button>Register</button>
-          </Link>
           <Link to={'/login'}>
             <button>Login</button>
+          </Link>
+          <Link to={'/register'}>
+            <button>Register</button>
           </Link>
         </div>
       </section>
