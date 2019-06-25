@@ -166,6 +166,16 @@ class AddShow extends Component {
           </div>
         }
 
+        {(this.state.episodesLoaded && !this.state.isLoaded) && 
+          <AddShowForm 
+            updateRecommendation={this.updateRecommendation} 
+            handleAdd={this.handleAdd} 
+            isValid={this.state.isValid}
+            getDate={this.getDate}
+            updateDate={this.updateDate}
+          />
+        }
+
         {this.state.episodesLoaded && 
           <div className='add_show_page__episode_results' >
             <EpisodeResults
@@ -173,15 +183,6 @@ class AddShow extends Component {
               updateEpisodeSelection={this.updateEpisodeSelection} />
           </div>
         }
-
-        {(this.state.episodesLoaded && !this.state.isLoaded) && 
-          <AddShowForm 
-            updateRecommendation={this.updateRecommendation} 
-            handleAdd={this.handleAdd} 
-            isValid={this.state.isValid}
-            // getDate={this.getDate}
-            updateDate={this.updateDate}
-          />}
 
       </section>
     )

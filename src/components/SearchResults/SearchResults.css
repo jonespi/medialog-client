@@ -28,14 +28,13 @@ fieldset {
 
 @media only screen and (max-width: 425px) {
   .add_show_page fieldset {
-    height: 450px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
     width: 90%;
   }
 
   .movie_results_form fieldset {
-    height: 400px;
     overflow: scroll;
   }
 
@@ -45,6 +44,10 @@ fieldset {
 
   .show_result {
     margin: 10px 10px;
+  }
+
+  .search_results_ul {
+    height: 325px;
   }
 }
 
