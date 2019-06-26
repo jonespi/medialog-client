@@ -1,12 +1,9 @@
 .episode_results__ul {
+  margin-left: auto;
+  margin-right: auto;
   padding: 0;
-  width: 100%;
   list-style-type: none;
   height: 275px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
 }
 
 .episode_results__ul li {

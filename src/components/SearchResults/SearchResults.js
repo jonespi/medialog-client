@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import MovieResult from './MovieResult'
+import TvResult from './TvResult'
 import './SearchResults.css'
 
 export default class SearchResults extends Component {
@@ -6,33 +8,27 @@ export default class SearchResults extends Component {
     results: [],
   }
 
-  render() {
-    return (
-      <fieldset>
+  render() {    
+      return (
         <ul className='search_results_ul'>
           {this.props.results.map(result => {
-            const movie = {
-              "title": result.title,
-              "url": `https://themoviedb.org/movie/${result.id}`,
-              "image": `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}`
+            console.log(this.props.endpoint)
+            if (this.props.endpoint === 'tv') {
+              return <TvResult
+                key={result.id}
+                result={result}
+                change={this.props.change} />
             }
-
-            if (!result.poster_path) {
-              movie.image = 'https://picsum.photos/200/300'
+            if (this.props.endpoint === 'movie') {
+              return <MovieResult 
+                key={result.id}
+                result={result} 
+                change={this.props.change} />
             }
-
-            return (
-              <li key={result.id} className="movie_result">
-                <label> <img className='result_img' src={movie.image} alt={`${movie.title} poster`} />
-                <br />
-                <input name="movies" value={JSON.stringify(movie)} type="radio" id={`movie_${result.id}`} required onChange={e => this.props.change(e.target.value)}  />
-                {movie.title}
-                </label>
-              </li>
-            )
-          })}
+            return null
+          })
+          }
         </ul>
-      </fieldset>
-    )
+      )
   }
 }

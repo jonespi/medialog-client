@@ -2,7 +2,7 @@ import config from '../../config'
 import TokenService from './TokenService'
 
 const Service = {
-  AddMedia(movie) {
+  addMedia(movie) {
     return fetch(`${config.API_ENDPOINT}/watch_list`, {
       method: 'POST',
       headers: {

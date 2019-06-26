@@ -24,7 +24,12 @@ button {
   border-radius: 7.5px;
 }
 
-button:hover:enabled {
+input {
+  border-radius: 7.5px;
+  margin-bottom: 5px;
+}
+
+button:hover:enabled, .button:hover {
   padding: 10px;
   color: #373737;
   background-color: #ffffff;

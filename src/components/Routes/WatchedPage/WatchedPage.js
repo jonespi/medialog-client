@@ -38,9 +38,6 @@ export default class WatchedList extends Component {
 
   deleteMedia = (id) => {
     if (window.confirm('Are you sure you wish to delete this item?')) {
-      this.setState({
-        isLoaded: false,
-      })
       Service.deleteMedia(id)
       .then(() => {
         this.getResults()

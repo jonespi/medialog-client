@@ -1,15 +1,17 @@
 import React from 'react'
-import TvShowResults from '../TvShowResults/TvShowResults'
+import SearchResults from '../SearchResults/SearchResults'
 
 export default function AddShowForm(props) {
   return  (
-  <>
-    <form className='show_results_form' onSubmit={props.getSeasons}>
+    <form className='select_show_form' onSubmit={props.getSeasons}>
       <button type="submit" disabled={!props.showIsValid}>
         Get Seasons
       </button>
+      <SearchResults 
+        endpoint={props.endpoint}
+        results={props.results} 
+        change={props.updateTvSelection} 
+      />
     </form>
-    <TvShowResults results={props.results} change={props.updateTvSelection} className='search_results' />
-  </>
   )
 }
