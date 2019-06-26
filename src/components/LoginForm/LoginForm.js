@@ -6,6 +6,7 @@ import './LoginForm.css'
 export default class LoginForm extends Component {
   state = {
     error: null,
+    formSubmitted: false
   }
 
   handleSubmit = ev => {
@@ -31,7 +32,7 @@ export default class LoginForm extends Component {
   render() {
     return (
       <section className="login_form">
-        <form onSubmit={this.handleSubmit}>
+        {!this.state.formSubmitted && <form onSubmit={this.handleSubmit}>
           <span>
             <h3>Username</h3>
             {this.state.error && <p>{this.state.error}</p>}
@@ -45,7 +46,9 @@ export default class LoginForm extends Component {
           <button>
             Submit
           </button>
-        </form>
+        </form>}
+
+        {this.state.formSubmitted && <img src="https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif" alt="loading gif" />}
       </section>
     )
   }

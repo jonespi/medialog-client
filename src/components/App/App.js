@@ -8,19 +8,19 @@ import LandingPage from '../Routes/LandingPage/LandingPage'
 import RegistrationPage from '../Routes/RegistrationPage/RegistrationPage'
 import LoginPage from '../Routes/LoginPage/LoginPage'
 import AddMoviePage from '../Routes/AddMoviePage/AddMoviePage'
-import AddShowPage from '../Routes/AddShowPage/AddShowPage'
+import AddMediaPage from '../Routes/AddMediaPage/AddMediaPage'
 import WatchedPage from '../Routes/WatchedPage/WatchedPage'
 
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <Switch>
         <PublicRoute exact path={'/'} component={LandingPage}/>
         <PublicRoute path={'/register'} component={RegistrationPage}/>
         <PublicRoute path={'/login'} component={LoginPage}/>
         <PrivateRoute path={'/add_movie'} component={AddMoviePage}/>
-        <PrivateRoute path={'/add_show'} component={AddShowPage}/>
+        <PrivateRoute path={'/add_media'} component={AddMediaPage}/>
         <PrivateRoute path={'/watch_list'} component={WatchedPage} />
       </Switch>
     </div>

@@ -3,7 +3,6 @@ import './EpisodeResults.css'
 
 export default function EpisodeResults(props) {
     return (
-      <fieldset>
         <ul className='episode_results__ul'>
           {props.episodes.map(result => {
             const episode = {
@@ -13,7 +12,7 @@ export default function EpisodeResults(props) {
             }
             return (
                 <li key={result.id}>
-                  <label>
+                  <label htmlFor={`episode_${result.id}`}>
                   <input name="episode" value={JSON.stringify(episode)} type="radio" id={`episode_${result.id}`} onChange={e => props.updateEpisodeSelection(e.target.value)} required />
                     {episode.episode_name}
                   </label>
@@ -21,6 +20,5 @@ export default function EpisodeResults(props) {
             )
           })}
         </ul>
-      </fieldset>
     )
 }

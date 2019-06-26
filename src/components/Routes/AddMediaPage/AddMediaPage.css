@@ -1,0 +1,113 @@
+.add_media_page {
+  display: flex;
+  max-width: 100%;
+  width: 1024px;
+  flex-direction: column;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add_media_form {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 550px;
+  max-width: 90%;
+}
+
+.add_media_form button {
+  align-self: center;
+  margin-top: 20px;
+  width: 50%;
+}
+
+.add_media_form__context {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 90%;
+  margin-top: 20px;
+}
+
+.add_media_page h3 {
+  font-size: .80rem;
+}
+
+.add_media_form__context select, .add_media_form__context input {
+  margin: 0 10px;
+}
+
+.search_form {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.search_form button {
+  align-self: center;
+  width: 75%;
+}
+
+.segmented-control {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.segmented-control__item {
+  margin: 0;
+  list-style-type: none;
+}
+
+.segmented-control__input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.segmented-control__label {
+  padding: 0 25px;
+  display: block;
+  border: 1px solid #ddd;
+  text-align: center;  
+}
+
+.segmented-control__label:hover {
+  background: #C0B283;
+  color: #ffffff; 
+}
+
+.segmented-control__input:checked + .segmented-control__label {
+  background: #C0B283;
+  color: #ffffff; 
+}
+
+.select_show_form {
+  margin-top: 20px;
+}
+
+.show_results_form {
+  max-width: 100%;
+  margin-top: 25px;
+}
+
+.season_buttons {
+  margin-top: 25px;
+}
+
+.season_buttons button {
+  max-width: 100%;
+  margin: 7.5px 15px;
+}
+
+.show_results_form__context {
+  margin-top: -20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
+}

@@ -4,31 +4,28 @@ import TokenService from '../Service/TokenService';
 import './Header.css'
 
 export default class Header extends Component {
-  handleLogoutClick = () => {
-    if (window.confirm('Are you sure you wish to log out?')) {
+  handleLogoutClick = (e) => {
+    if (window.confirm('Are you sure you want to log out?')) {
       TokenService.clearAuthToken()
-      window.location.reload();
+      // component is consistent in App. Needs to reload when log out is confirmed
+      this.forceUpdate();
     }
   }
 
   renderLogoutLink() {
     return (
       <div className='Header__logged-in'>
-        <Link to='/add_movie'>
-          <button>
-            Add Movie
-          </button>
+        <Link className="button" to='/add_media'>
+          Add Media
         </Link>
-        <Link to='/add_show'>
-          <button>Add Show</button>
-        </Link>
-        <Link to='/watch_list'>
-          <button>Watch List</button>
+        <Link className="button" to='/watch_list'>
+          Watch List
         </Link>
         <Link
+          className="button"
           onClick={this.handleLogoutClick}
           to='/'>
-          <button>Logout</button>
+            Logout
         </Link>
       </div>
     )
@@ -37,14 +34,8 @@ export default class Header extends Component {
   renderLoginLink() {
     return (
       <div className='Header__not-logged-in'>
-        <Link
-          to='/login'>
-          <button>Log in</button>
-        </Link>
-        <Link
-          to='/register'>
-          <button>Register</button>
-        </Link>
+        <Link className="button" to='/login'>Log in</Link>
+        <Link className="button" to='/register'>Register</Link>
       </div>
     )
   }
@@ -54,9 +45,7 @@ export default class Header extends Component {
       <nav className='Header'>
         <div className='left-header'>
           <Link to='/'>
-            <h1>
-              MediaLog
-            </h1>
+            <h1>MEDIALog <span role="img" aria-label="tv and film" >📺🎬</span></h1>
           </Link>
           <span className='tagline'>Whatcha watchin?</span>
         </div>

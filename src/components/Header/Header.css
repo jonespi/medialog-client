@@ -15,6 +15,19 @@ nav {
   align-items: center;
 }
 
+.button {
+  text-decoration: none;
+  padding: 10px;
+  color: #ffffff;
+  background-color: #373737;
+  border-radius: 7.5px;
+  margin: 0 5px;
+}
+
+.Header__logged-in button, .Header__not-logged-in button {
+ margin: 0 2.5px;
+}
+
 .left-header {
   display: flex;
   flex-direction: column;
@@ -34,7 +47,7 @@ nav {
   font-weight: bold;
 }
 
-.right-header button {
+.right-header .button {
   font-size: .65rem;
 }
 

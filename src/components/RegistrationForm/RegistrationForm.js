@@ -5,12 +5,13 @@ import './RegistrationForm.css'
 export default class RegistrationForm extends Component {
   state = { 
     error: null,
-    passwordMatch: false 
+    passwordDisplay: 'password',
+    formSubmitted: false
   }
 
   handleSubmit = ev => {
-    ev.preventDefault();
-    this.setState({ error: null })
+    ev.preventDefault()
+    this.setState({ error: null, formSubmitted: true })
     const {user_name, password} = ev.target;
     AuthApiService.postUser({
       user_name: user_name.value,
@@ -22,14 +23,26 @@ export default class RegistrationForm extends Component {
         this.props.onRegistrationSuccess()
       })
       .catch(res => {
-        this.setState({ error: res.error })
+        this.setState({ error: res.error, formSubmitted: false })
       })
+  }
+
+  showPassword = () => {
+    if (this.state.passwordDisplay === 'password') {
+      this.setState({
+        passwordDisplay: 'text'
+      })
+    } else {
+      this.setState({
+        passwordDisplay: 'password'
+      })
+    }
   }
   
   render() {
     return (
       <section className="registration_form">
-        <form onSubmit={this.handleSubmit}>
+        {!this.state.formSubmitted && <form onSubmit={this.handleSubmit}>
           <span>
             <h3>Username</h3>
             {this.state.error && <p>{this.state.error}</p>}
@@ -38,13 +51,17 @@ export default class RegistrationForm extends Component {
           <span>
             <h3>Password</h3>
             <p>Password must have a capital letter, a number, and a special character (!@#$%^&)</p>
-            <input name='password' type='password' required id='registration_form__password' />
+            <input name='password'  type={this.state.passwordDisplay} required id='registration_form__password' />
+            <br />
+            <label><input type="checkbox" onClick={this.showPassword} />Show Password</label>
           </span>
           <br/>
           <button type="submit">
             Submit
           </button>
-        </form>
+        </form>}
+
+        {this.state.formSubmitted && <img src="https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif" alt="loading gif" />}
       </section>
     )
   }

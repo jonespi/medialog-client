@@ -8,8 +8,7 @@ export default class TvShowResults extends Component {
 
   render() {
     return (
-      <fieldset>
-        <ul className='search_results_ul'>
+        <ul role="listbox" className='search_results_ul'>
           {this.props.results.map(result => {
             const show = {
               moviedb_id: result.id,
@@ -34,7 +33,6 @@ export default class TvShowResults extends Component {
             )
           })}
         </ul>
-      </fieldset>
-    )
+      )
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AddMovieForm from './AddMovieForm';
+import AddShowForm from './AddShowForm';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<AddMovieForm  getDate={()=>{}} renderDateInput={()=>{}} results={[]} />, div);
+  ReactDOM.render(<AddShowForm />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
