@@ -23,25 +23,25 @@ MediaLog is an application which uses [TMDb](http://themoviedb.org) to allow you
 ## Screenshots
 
 Landing Page
-![Landing Page](https://imgur.com/OOUi9TB){:height="50%" width="50%"}
+![Landing Page](https://i.imgur.com/OOUi9TB.png){:height="50%" width="50%"}
 
 Registration Page
-![Registration Page](https://imgur.com/VBDr8VA){:height="50%" width="50%"}
+![Registration Page](https://i.imgur.com/VBDr8VA.png){:height="50%" width="50%"}
 
 Login Page
-![Login Page](https://imgur.com/6lCcYyM){:height="50%" width="50%"}
+![Login Page](https://i.imgur.com/6lCcYyM.png){:height="50%" width="50%"}
 
 Media Search
-![Add Media Page Search](https://imgur.com/H8DkNaH){:height="50%" width="50%"}
+![Media Search](https://i.imgur.com/H8DkNaH.png){:height="50%" width="50%"}
 
 Movie Search
-![Add Media Page - Movie](https://imgur.com/W6sD7DC){:height="50%" width="50%"}
+![Add Media Page - Movie](https://i.imgur.com/W6sD7DC.jpg){:height="50%" width="50%"}
 
 TV Search
-![Add Media Page - TV](https://imgur.com/vsudS30){:height="50%" width="50%"}
+![Add Media Page - TV](https://i.imgur.com/vsudS30.png){:height="50%" width="50%"}
 
 Episode Select
-![Add Media Page - Episode Select](https://imgur.com/Gyl4Cox){:height="50%" width="50%"}
+![Add Media Page - Episode Select](https://i.imgur.com/Gyl4Cox.png){:height="50%" width="50%"}
 
 Watch Page
-![Watch Page](https://imgur.com/bZbZZ4w){:height="50%" width="50%"}
+![Watch Page](https://i.imgur.com/bZbZZ4w.jpg){:height="50%" width="50%"}
