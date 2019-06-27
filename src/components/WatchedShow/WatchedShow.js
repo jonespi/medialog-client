@@ -13,7 +13,7 @@ export default function WatchedShow(props) {
       <p>Season: {show.season}</p>
       <p>{show.episode_name}</p>
       <p>Date Watched: {moment(show.date_watched).format('ll')}</p>
-      <button onClick={() => props.delete(show.id)}>Delete</button>
+      <button onClick={() => props.delete(show.id)} aria-label={`delete selected media`}>Delete</button>
     </li>
   )
 }

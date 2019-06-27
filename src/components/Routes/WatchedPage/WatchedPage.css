@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.watch_page h2, .watch_page p {
+  margin: 7.5px 0;
+}
+
 .watch_page__select_filters {
   margin-left: auto;
   margin-right: auto;
@@ -56,14 +60,13 @@
   text-decoration: none;
 }
 
-.watch_page__ul li a:hover {
-  color: #C0B283;
-}
-
 .watch_page__ul li button {
   align-self: center;
-  width: 50%;
   font-size: .5rem;
+}
+
+.watch_page__ul li button:hover {
+  background-color: #E54E45;
 }
 
 @media only screen and (max-width: 425px) {

@@ -141,7 +141,7 @@ export default class WatchedList extends Component {
 
   renderTypeSelect() {
     return (
-      <select onChange={this.filterMediaType}>
+      <select onChange={this.filterMediaType} aria-label='media type filter watch list'>
         <option>All</option>
         <option>Movie</option>
         <option>Tv</option>
@@ -152,7 +152,7 @@ export default class WatchedList extends Component {
   renderMonthsSelect(results) {
     const months = this.getMonths(results)
     return (
-      <select onChange={this.filterResultsMonths}>
+      <select onChange={this.filterResultsMonths} aria-label='month viewed filter watch list'>
         <option>All</option>
         {months.map(month => <option key={month}>{month}</option>)}
       </select>
@@ -162,7 +162,7 @@ export default class WatchedList extends Component {
   renderYearsSelect(results) {
     const years = this.getYears(results)
     return (
-      <select onChange={this.filterResultsYears}>
+      <select onChange={this.filterResultsYears} aria-label='year viewed filter watch list'>
         <option>All</option>
         {years.map(year => <option key={year}>{year}</option>)}
       </select>
@@ -171,7 +171,7 @@ export default class WatchedList extends Component {
 
   renderRecommendSelect() {
     return (
-      <select onChange={this.filterRecommendations}>
+      <select onChange={this.filterRecommendations} aria-label='recommendation filter watch list'>
         <option>All</option>
         <option value='recommend'>Recommended</option>
         <option value='do-not-recommend'>Do Not Recommend</option>

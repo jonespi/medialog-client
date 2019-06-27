@@ -1,4 +1,8 @@
-.login_form button, .login_form button:hover {
-  padding: 20px;
-  margin: 20px;
+.login_page button, .registration_page button {
+  padding: 10px 15px;
+  margin: 15px;
+}
+
+.login_page button:hover, .registration_page button:hover {
+  background-color: #E54E45;
 }

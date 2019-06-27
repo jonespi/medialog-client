@@ -11,7 +11,7 @@ export default function WatchedMovie(props) {
       </a>
       <i className="fas fa-film"></i> 
       <p>Date Watched: {moment(movie.date_watched).format('ll')}</p>
-      <button onClick={() => props.delete(movie.id)}>Delete</button>
+      <button onClick={() => props.delete(movie.id)} aria-label={`delete ${movie.title}`}>Delete</button>
     </li>
   )
 }

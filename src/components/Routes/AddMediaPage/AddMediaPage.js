@@ -30,7 +30,6 @@ class AddMedia extends Component {
   handleSearch = ev => {
     ev.preventDefault()
     const { add_search, media_type } = ev.target
-    console.log(media_type.value);
     MovieDBService.getMedia(add_search.value, media_type.value)
       .then(res => {
         if (media_type.value === "tv") {
@@ -198,17 +197,17 @@ class AddMedia extends Component {
 
         {this.state.endpoint === 'movie' && 
           <>
+            <SearchResults 
+              endpoint={this.state.endpoint}
+              results={this.state.results} 
+              change={this.updateMovieSelection}
+            />
             <AddMediaForm 
               updateRecommendation={this.updateRecommendation} 
               handleAdd={this.handleAdd} 
               isValid={this.state.movieValid}
               date={this.state.date}
               updateDate={this.updateDate}
-            />
-            <SearchResults 
-              endpoint={this.state.endpoint}
-              results={this.state.results} 
-              change={this.updateMovieSelection}
             />
           </>
         }
@@ -219,6 +218,14 @@ class AddMedia extends Component {
           </div>
         }
 
+        {this.state.episodesLoaded && 
+          <>
+            <EpisodeResults
+              episodes={this.state.episodes} 
+              updateEpisodeSelection={this.updateEpisodeSelection} />
+          </>
+        }
+
         {(this.state.episodesLoaded && !this.state.isLoaded) && 
           <AddMediaForm 
             updateRecommendation={this.updateRecommendation} 
@@ -227,14 +234,6 @@ class AddMedia extends Component {
             date={this.state.date}
             updateDate={this.updateDate}
           />
-        }
-
-        {this.state.episodesLoaded && 
-          <>
-            <EpisodeResults
-              episodes={this.state.episodes} 
-              updateEpisodeSelection={this.updateEpisodeSelection} />
-          </>
         }
 
       </section>

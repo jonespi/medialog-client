@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import AuthApiService from '../Service/AuthApiService';
 import TokenService from '../Service/TokenService';
 import './LoginForm.css'
@@ -6,7 +7,7 @@ import './LoginForm.css'
 export default class LoginForm extends Component {
   state = {
     error: null,
-    formSubmitted: false
+    passwordVisibility: 'text'
   }
 
   handleSubmit = ev => {
@@ -21,6 +22,8 @@ export default class LoginForm extends Component {
         user_name.value = ''
         password.value = ''
 
+        this.setState({ formSubmitted: true })
+
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
       })
@@ -29,27 +32,35 @@ export default class LoginForm extends Component {
       })
   }
 
+  passwordUpdate = () => {
+    this.setState({
+      passwordVisibility: 'password'
+    })
+  }
+
   render() {
     return (
-      <section className="login_form">
-        {!this.state.formSubmitted && <form onSubmit={this.handleSubmit}>
+      <>
+        <form onSubmit={this.handleSubmit}>
           <span>
             <h3>Username</h3>
             {this.state.error && <p>{this.state.error}</p>}
-            <input name='user_name' type='text' required id='login_form__user_name' />
+            <input name='user_name' type='text' required id='login_form__user_name' defaultValue='medialog' aria-label="username" />
           </span>
           <span>
             <h3>Password</h3>
-            <input name='password' type='password' required id='login_form__password' />
+            <input name='password' type={this.state.passwordVisibility} onChange={this.passwordUpdate} required id='login_form__password' defaultValue='P@ssw0rd' aria-label='password' />
           </span>
           <br/>
-          <button>
+          <button aria-label='submit login'>
             Submit
           </button>
-        </form>}
+        </form>
 
-        {this.state.formSubmitted && <img src="https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif" alt="loading gif" />}
-      </section>
+        <Link to='/register'>
+          <p>Don't have an account?</p>
+        </Link>
+      </>
     )
   }
 }

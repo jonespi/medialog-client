@@ -1,7 +1,3 @@
-fieldset {
-  margin-top: 20px;
-}
-
 .search_results_ul {
   width: 90%;
   padding: 0;
@@ -29,18 +25,6 @@ fieldset {
 }
 
 @media only screen and (max-width: 425px) {
-  .add_show_page fieldset {
-    overflow: scroll;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50px;
-    width: 90%;
-  }
-
-  .movie_results_form fieldset {
-    overflow: scroll;
-  }
-
   .result_img, .movie_result, .show_result {
     width: 100px;
   }

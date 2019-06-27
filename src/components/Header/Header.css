@@ -1,14 +1,13 @@
 .nav_container {
-  padding: 0 25px 25px 25px;
+  padding: 0 25px 5px 25px;
   display: flex;
   flex-direction: row;
   background-color: #DCD0C0;
-  border-radius: 0 0 25px 25px;
+  border-radius: 0 0 10px 10px;
 }
 
 nav {
   align-self: center;
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -24,7 +23,14 @@ nav {
   margin: 0 5px;
 }
 
-.Header__logged-in button, .Header__not-logged-in button {
+.Header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1024px;
+  width: 100%;
+}
+
+.Header__logged-in .button, .Header__not-logged-in .button {
  margin: 0 2.5px;
 }
 
@@ -40,11 +46,6 @@ nav {
 
 .left-header a {
   text-decoration: none;
-}
-
-.left-header a:hover {
-  color: black;
-  font-weight: bold;
 }
 
 .right-header .button {

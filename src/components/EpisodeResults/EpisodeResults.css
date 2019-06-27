@@ -1,6 +1,11 @@
 .episode_results__ul {
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 1024px;
+  width: 90%;
   padding: 0;
   list-style-type: none;
   height: 275px;

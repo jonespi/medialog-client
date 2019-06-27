@@ -52,6 +52,10 @@
   width: 75%;
 }
 
+.search_form button:hover {
+  background-color: #E54E45;
+}
+
 .segmented-control {
   padding: 0;
   display: flex;
@@ -64,9 +68,17 @@
   list-style-type: none;
 }
 
+.segmented-control__item .left {
+  border-radius: 5px 0 0 5px;
+}
+
+.segmented-control__item .right {
+  border-radius: 0 5px 5px 0;
+}
+
 .segmented-control__input {
   position: absolute;
-  visibility: hidden;
+  opacity: 0;
 }
 
 .segmented-control__label {
@@ -81,9 +93,18 @@
   color: #ffffff; 
 }
 
+.segmented-control__input:focus + .segmented-control__label {
+  outline: 1px solid blue;
+}
+
+
 .segmented-control__input:checked + .segmented-control__label {
   background: #C0B283;
   color: #ffffff; 
+}
+
+.add_search_input_text {
+  height: 2rem;
 }
 
 .select_show_form {

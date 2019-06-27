@@ -12,7 +12,7 @@
   justify-content: center;
 }
 
-.landing_page_buttons button {
+.landing_page_buttons .button {
   font-size: 1.1rem;
   width: 100px;
   height: 50px;
