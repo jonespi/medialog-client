@@ -55,7 +55,7 @@ nav {
 @media only screen and (max-width: 425px) {
   .Header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
     padding-bottom: 0px;
   }
@@ -68,7 +68,11 @@ nav {
     font-size: .90rem;
   }
 
-  .left-header h1 {
-    margin: 0;
+  .left-header p {
+    display: none;
+  }
+
+  .right-header .button {
+    font-size: .5rem
   }
 }

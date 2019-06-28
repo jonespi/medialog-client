@@ -45,11 +45,9 @@ export default class RegistrationForm extends Component {
       <>
         {!this.state.formSubmitted && 
           <form onSubmit={this.handleSubmit}>
-            <span>
-              <h3>Username</h3>
-              {this.state.error && <p>{this.state.error}</p>}
-              <input name='user_name' type='text' required id='registration_form__user_name' />
-            </span>
+            <h3>Username</h3>
+            {this.state.error && <p>{this.state.error}</p>}
+            <input name='user_name' type='text' required id='registration_form__user_name' />
             <span>
               <h3>Password</h3>
               <p className="registration_page__p">Password must have a capital letter, a number, and a special character (!@#$%^&)</p>

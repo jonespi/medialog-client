@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Service from '../../Service/Service'
 import WatchedMovie from '../../WatchedMovie/WatchedMovie'
 import WatchedShow from '../../WatchedShow/WatchedShow'
+import {EmptyWatchList} from  '../../Utils/Utils'
 import Helpers from '../../Utils/Helpers'
 import './WatchedPage.css'
 
@@ -190,6 +191,10 @@ export default class WatchedList extends Component {
           <p>Year: {this.renderYearsSelect(this.state.results)}</p>
           <p>Recommend: {this.renderRecommendSelect(this.state.results)}</p>
         </div>
+
+        {!this.state.results.length &&
+          <EmptyWatchList />
+        }
 
         <ul className='watch_page__ul'>
           {!this.state.isFiltered && this.state.results.map(media => {

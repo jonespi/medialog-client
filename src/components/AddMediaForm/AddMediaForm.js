@@ -1,7 +1,8 @@
 import React from 'react'
 
 export default function AddMediaForm(props) {
-  return  <form className='add_media_form' onSubmit={props.handleAdd}>
+  return  (
+  <form className='add_media_form' onSubmit={props.handleAdd}>
     <div className='add_media_form__context'>
         <div className="add_media_form__context__recommendation">
           <p>Recommended?</p>
@@ -19,4 +20,5 @@ export default function AddMediaForm(props) {
       Add media
     </button>
   </form>
+  )
 }

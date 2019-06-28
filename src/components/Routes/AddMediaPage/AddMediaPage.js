@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Service from '../../Service/Service'
 import MovieDBService from '../../Service/MovieDBService'
+import {SeasonButton, NoResults} from '../../Utils/Utils'
 import SearchForm from '../../SearchForm/SearchForm'
 import SearchResults from '../../SearchResults/SearchResults'
 import SelectShowForm from '../../SelectShowForm/SelectShowForm'
@@ -15,6 +16,9 @@ class AddMedia extends Component {
     tvValid: false,
     showIsValid: false,
     endpoint: '',
+    results: [],
+    searched: false,
+    noResults: false,
     movie: {},
     show: {},
     num_of_seasons: null,
@@ -27,30 +31,51 @@ class AddMedia extends Component {
     recommendation: 'recommend'
   }
 
+  resetState = () => {
+    this.setState({
+      searched: false,
+      noResults: false,
+      seasonsLoaded: false,
+      episodesLoaded: false,
+      selectedSeason: null,
+      selectedEpisode: null
+    })
+  }
+
   handleSearch = ev => {
     ev.preventDefault()
     const { add_search, media_type } = ev.target
     MovieDBService.getMedia(add_search.value, media_type.value)
       .then(res => {
+        this.resetState()
         if (media_type.value === "tv") {
           this.setState({
             endpoint: 'tv',
-            results: res.results.slice(0, 10),
+            results: res.results,
+            searched: true,
             seasonsLoaded: false,
             episodesLoaded: false
-          })
+          }, this.validateResults)
         }
         if (media_type.value === "movie") {
           this.setState({
-            results: res.results.slice(0, 10),
             endpoint: 'movie',
-            movieLoaded: true
-          })
+            results: res.results,
+            searched: true,
+          }, this.validateResults)
         }
-      })
+      }, this.validateResults)
       .catch(res => {
         this.setState({ error: res.error })
       })
+  }
+
+  validateResults = () => {
+    if (!this.state.results.length) {
+      this.setState({
+        noResults: true
+      })
+    }
   }
 
   updateMovieSelection = (movie) => {
@@ -122,10 +147,12 @@ class AddMedia extends Component {
     }
     return buttons.map(season => {
       return (
-          <button key={season.number} onClick={(id, season_num) => this.renderSeasonEpisodes(this.state.show.moviedb_id, season.number)}>
-            Season {season.number}
-          </button>
-        )
+        <SeasonButton 
+          id={this.state.show.moviedb_id}
+          season_num={season.number}
+          renderSeasonEpisodes={this.renderSeasonEpisodes}
+        />
+      )
     })
   }
 
@@ -180,10 +207,13 @@ class AddMedia extends Component {
     return (
       <section className='add_media_page'>
         <h3>Add Media</h3>
-        {(!this.state.tvLoaded || !this.state.seasonsLoaded) &&
-        <SearchForm handleSearch={this.handleSearch} />}
+        <SearchForm handleSearch={this.handleSearch} />
 
-        {this.state.endpoint === 'tv' && !this.state.seasonsLoaded && 
+        {this.state.noResults &&
+          <NoResults />
+        }
+
+        {this.state.endpoint === 'tv' && !this.state.noResults && !this.state.seasonsLoaded && 
           <>
             <SelectShowForm 
               endpoint={this.state.endpoint}
@@ -195,7 +225,7 @@ class AddMedia extends Component {
           </>
         }
 
-        {this.state.endpoint === 'movie' && 
+        {(this.state.endpoint === 'movie' && !this.state.noResults)&& 
           <>
             <SearchResults 
               endpoint={this.state.endpoint}

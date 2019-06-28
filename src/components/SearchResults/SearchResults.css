@@ -34,7 +34,12 @@
   }
 
   .search_results_ul {
-    height: 325px;
+    overflow-y: scroll;
+    height: 265px;
+  }
+
+  .select_show_form .search_results_ul {
+    height: 425px;
   }
 }
 

@@ -3,6 +3,6 @@
   margin: 15px;
 }
 
-.login_page button:hover, .registration_page button:hover {
+.login_page button:hover:enabled, .registration_page button:hover:enabled {
   background-color: #E54E45;
 }
