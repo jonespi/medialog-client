@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import MovieResult from './MovieResult'
-import TvResult from './TvResult'
+import MovieResult from './MediaResultTypes/MovieResult'
+import TvResult from './MediaResultTypes/TvResult'
 import './SearchResults.css'
 
 export default class SearchResults extends Component {
@@ -12,7 +12,6 @@ export default class SearchResults extends Component {
       return (
         <ul className='search_results_ul'>
           {this.props.results.map(result => {
-            console.log(this.props.endpoint)
             if (this.props.endpoint === 'tv') {
               return <TvResult
                 key={result.id}

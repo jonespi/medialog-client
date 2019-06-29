@@ -23,3 +23,12 @@ export default function TvResult(props) {
     </li>
   )
 }
+
+TvResult.defaultProps = {
+  change: () => {},
+  result: {
+    title: '',
+    id: '',
+    poster_path: ''
+  }
+}

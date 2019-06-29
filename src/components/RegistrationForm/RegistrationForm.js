@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import AuthApiService from '../Service/AuthApiService';
-import './RegistrationForm.css'
+import LoadingGif from '../Utils/loading.gif'
 
 export default class RegistrationForm extends Component {
   state = { 
@@ -41,28 +42,31 @@ export default class RegistrationForm extends Component {
   
   render() {
     return (
-      <section className="registration_form">
-        {!this.state.formSubmitted && <form onSubmit={this.handleSubmit}>
-          <span>
+      <>
+        {!this.state.formSubmitted && 
+          <form onSubmit={this.handleSubmit}>
             <h3>Username</h3>
             {this.state.error && <p>{this.state.error}</p>}
             <input name='user_name' type='text' required id='registration_form__user_name' />
-          </span>
-          <span>
-            <h3>Password</h3>
-            <p>Password must have a capital letter, a number, and a special character (!@#$%^&)</p>
-            <input name='password'  type={this.state.passwordDisplay} required id='registration_form__password' />
-            <br />
-            <label><input type="checkbox" onClick={this.showPassword} />Show Password</label>
-          </span>
-          <br/>
-          <button type="submit">
-            Submit
-          </button>
-        </form>}
+            <span>
+              <h3>Password</h3>
+              <p className="registration_page__p">Password must have a capital letter, a number, and a special character (!@#$%^&)</p>
+              <input name='password'  type={this.state.passwordDisplay} required id='registration_form__password' />
+              <br />
+              <label><input type="checkbox" onClick={this.showPassword} />Show Password</label>
+            </span>
+            <br/>
+            <button type="submit">
+              Submit
+            </button>
+            <Link to='/login'>
+              <p>Already have an account?</p>
+            </Link>
+          </form>
+        }
 
-        {this.state.formSubmitted && <img src="https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif" alt="loading gif" />}
-      </section>
+        {this.state.formSubmitted && <img src={LoadingGif} alt="loading gif" />}
+      </>
     )
   }
 }

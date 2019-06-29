@@ -3,9 +3,8 @@ import {Link} from 'react-router-dom'
 import {Login} from '../Utils/Utils'
 import AuthApiService from '../Service/AuthApiService';
 import TokenService from '../Service/TokenService';
-import './LoginForm.css'
 
-export default class LoginForm extends Component {
+export default class DemoLoginForm extends Component {
   state = {
     error: null,
     passwordVisibility: 'text'
@@ -47,8 +46,8 @@ export default class LoginForm extends Component {
           error={this.state.error}
           passwordVisibility={this.state.passwordVisibility}
           passwordUpdate={this.passwordUpdate}
-          defaultUserName={''}
-          defaultPassword={''} />
+          defaultUsername={'medialog'}
+          defaultPassword={'P@ssw0rd'} />
         <Link to='/register'>
           <p>Don't have an account?</p>
         </Link>

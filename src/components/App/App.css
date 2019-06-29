@@ -18,6 +18,7 @@ html {
 }
 
 button {
+  cursor: pointer;
   padding: 10px;
   color: #ffffff;
   background-color: #373737;
@@ -25,13 +26,20 @@ button {
 }
 
 input {
-  border-radius: 7.5px;
   margin-bottom: 5px;
 }
 
-button:hover:enabled, .button:hover {
+.button:hover:enabled, .button:hover {
   padding: 10px;
-  color: #373737;
-  background-color: #ffffff;
+  color: #fff;
+  background-color: #E54E45;
   border-radius: 5px;
+}
+
+a {
+  color: #5C627B;
+}
+
+a:hover {
+  color: #E54E45;
 }

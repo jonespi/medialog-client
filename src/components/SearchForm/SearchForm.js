@@ -7,14 +7,14 @@ export default function SearchForm(props) {
         <ul className="segmented-control">
           <li className="segmented-control__item">
               <input className="segmented-control__input" type="radio" value="movie" name="media_type" id="movie" defaultChecked/>
-              <label className="segmented-control__label" htmlFor="movie">Movie</label>
+              <label className="segmented-control__label left" htmlFor="movie">Movie</label>
           </li>
           <li className="segmented-control__item">
               <input className="segmented-control__input" type="radio" value="tv" name="media_type" id="tv" />
-              <label className="segmented-control__label" htmlFor="tv">TV</label>
+              <label className="segmented-control__label right" htmlFor="tv">TV</label>
           </li>
         </ul>
-        <input name='add_search' type='text' required id='add_page___search' />
+        <input name='add_search' type='text' className="add_search_input_text" required id='add_page___search' />
         <button>Search</button>
       </form>
     </section>

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WatchedShow from './WatchedShow'
+import MovieResult from './MovieResult'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<WatchedShow show={{}} />, div);
+  ReactDOM.render(<MovieResult />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

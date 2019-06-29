@@ -1,19 +1,25 @@
 .episode_results__ul {
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 1024px;
+  width: 90%;
   padding: 0;
   list-style-type: none;
-  height: 275px;
+  max-height: 300px;
 }
 
 .episode_results__ul li {
-  text-align: left;
+  align-self: center;
 }
 
 @media only screen and (max-width: 425px) {
   .episode_results__ul {
+    max-height: 135px;
     flex-wrap: nowrap;
-    overflow: scroll;
+    overflow-y: scroll;
     justify-content: flex-start;
   }
 }

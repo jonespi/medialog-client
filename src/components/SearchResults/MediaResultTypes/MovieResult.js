@@ -22,3 +22,12 @@ export default function MovieResult(props) {
       </li>
     )
   }
+
+MovieResult.defaultProps = {
+  change: () => {},
+  result: {
+    title: '',
+    id: '',
+    poster_path: ''
+  }
+}
