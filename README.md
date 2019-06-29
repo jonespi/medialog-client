@@ -1,6 +1,6 @@
 # MediaLog
 
-MEDIALog is your movie and tv diary.
+MediaLog is your movie and tv diary. Inspired by my dad who gets 30 minutes into a movie before realizing he had seen it already, MediaLog helps you look up items that you have added to your Watched List to track what you've seen already. It is a lightweight application that allows you to easily search and add media via [TMDb](http://themoviedb.org).
 
 ## Live App 
 http://medialog-client.jonespi.now.sh
@@ -10,8 +10,6 @@ https://github.com/jonespi/medialog-client
 
 ## Backend 
 https://github.com/jonespi/medialog-server
-
-MediaLog is an application which uses [TMDb](http://themoviedb.org) to allow you to log and track movies and television shows you have watched. Users are able to add movies and individual tv show episodes to their Watch List which also allows you to filter your log by month, year, and recommendations.
 
 ## Tech Stack
 

@@ -26,3 +26,21 @@ export function NoResults() {
     </p>
   </div>
 }
+
+export function Login(props) {
+  return <form onSubmit={props.handleSubmit}>
+    <span>
+      <h3>Username</h3>
+      {props.error && <p>{props.error}</p>}
+      <input name='user_name' type='text' required id='login_form__user_name' aria-label="username" defaultValue={props.defaultUsername} />
+    </span>
+    <span>
+      <h3>Password</h3>
+      <input name='password' type={props.passwordVisibility} onChange={props.passwordUpdate} required id='login_form__password' aria-label='password' defaultValue={props.defaultPassword} />
+    </span>
+    <br/>
+    <button aria-label='submit login'>
+      Submit
+    </button>
+  </form>
+}

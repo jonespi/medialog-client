@@ -226,7 +226,7 @@ class AddMedia extends Component {
         }
 
         {(this.state.endpoint === 'movie' && !this.state.noResults)&& 
-          <>
+          <div className="add_movie_display">
             <SearchResults 
               endpoint={this.state.endpoint}
               results={this.state.results} 
@@ -239,7 +239,7 @@ class AddMedia extends Component {
               date={this.state.date}
               updateDate={this.updateDate}
             />
-          </>
+          </div>
         }
 
         {this.state.seasonsLoaded &&

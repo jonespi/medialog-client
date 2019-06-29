@@ -43,6 +43,16 @@
   margin: 0 10px;
 }
 
+.search_results_ul {
+  height: 400px;
+  overflow: scroll;
+}
+
+.add_movie_display {
+  display: flex;
+  align-items: center;
+}
+
 .search_form {
   margin-left: auto;
   margin-right: auto;
@@ -149,6 +159,10 @@
 @media only screen and (max-width: 425px) {
   .add_media_page {
     height: 100%;
+  }
+
+  .add_movie_display {
+    display: block;
   }
 
   .season_buttons button {
