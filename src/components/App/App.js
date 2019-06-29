@@ -7,7 +7,7 @@ import {Switch} from 'react-router-dom';
 import LandingPage from '../Routes/LandingPage/LandingPage'
 import RegistrationPage from '../Routes/RegistrationPage/RegistrationPage'
 import LoginPage from '../Routes/LoginPage/LoginPage'
-import DemoLoginPage from '../DemoLoginForm/DemoLoginForm'
+import DemoLoginPage from '../Routes/DemoLoginPage/DemoLoginPage'
 import AddMediaPage from '../Routes/AddMediaPage/AddMediaPage'
 import WatchedPage from '../Routes/WatchedPage/WatchedPage'
 

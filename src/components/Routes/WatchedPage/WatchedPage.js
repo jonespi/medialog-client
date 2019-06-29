@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Service from '../../Service/Service'
-import WatchedMovie from '../../WatchedMovie/WatchedMovie'
-import WatchedShow from '../../WatchedShow/WatchedShow'
+import {WatchedMovie, WatchedShow} from '../../Utils/Utils'
 import {EmptyWatchList} from  '../../Utils/Utils'
 import './WatchedPage.css'
 

@@ -14,7 +14,7 @@ https://github.com/jonespi/medialog-server
 ## Tech Stack
 
 - HTML, CSS, Javascript
-- Frontend: React
+- Frontend: React, Flexbox
 - Backend: Node.js, Express.js, Postgres
 - Authorization: Bcrypt, JSONWebToken
 

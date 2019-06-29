@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DemoLoginForm from '../../DemoLoginForm/DemoLoginForm'
 
+
 export default class DemoLoginPage extends Component {
   static defaultProps = {
     location: {},

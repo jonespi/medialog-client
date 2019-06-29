@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import moment from 'moment'
 
 export function SeasonButton(props) {
   return (
@@ -28,7 +29,7 @@ export function NoResults() {
 }
 
 export function Login(props) {
-  return <form onSubmit={props.handleSubmit}>
+  return <form onSubmit={props.handleSubmit} className="login_form">
     <span>
       <h3>Username</h3>
       {props.error && <p>{props.error}</p>}
@@ -43,4 +44,44 @@ export function Login(props) {
       Submit
     </button>
   </form>
+}
+
+export function WatchedMovie(props) {
+  const movie = props.movie
+  return (
+    <li key={movie.id} className="watch_page_li">
+      <a href={movie.url}>
+        <img className='result_img' src={props.movie.image} alt={`${props.movie.title} poster`} />
+        <h3>{movie.title}</h3>
+      </a>
+      <i className="fas fa-film"></i> 
+      <p>Date Watched: {moment(movie.date_watched).format('ll')}</p>
+      <button onClick={() => props.delete(movie.id)} aria-label={`delete ${movie.title}`}>Delete</button>
+    </li>
+  )
+}
+
+WatchedMovie.defaultProps = {
+  movie: {}
+}
+
+export function WatchedShow(props) {
+  const show = props.show
+  return (
+    <li key={show.id} className="watch_page_li">
+      <a className='result_url' href={show.url}>
+        <img className='result_img' src={show.image} alt={`${show.title} poster`} />
+        <h3>{show.title}</h3>
+      </a>
+      <i className="fas fa-tv"></i>
+      <p>Season: {show.season}</p>
+      <p>{show.episode_name}</p>
+      <p>Date Watched: {moment(show.date_watched).format('ll')}</p>
+      <button onClick={() => props.delete(show.id)} aria-label={`delete selected media`}>Delete</button>
+    </li>
+  )
+}
+
+WatchedShow.defaultProps = {
+  show: {}
 }
