@@ -1,12 +1,8 @@
+import moment from 'moment'
+
 const Helpers = {
   getNow() {
-    let now = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
-    let minDate = now.substring(0,9).split('/')
-    if (minDate[0].length > 1) {
-      return [minDate[2], minDate[0], minDate[1]].join('-');  
-    } else {
-      return [minDate[2], `0${minDate[0]}`, minDate[1]].join('-');
-    }
+    return moment().format('YYYY-MM-DD')
   },
 
   getDate(date_watched) {

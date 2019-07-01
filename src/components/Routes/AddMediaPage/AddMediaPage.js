@@ -10,7 +10,7 @@ import AddMediaForm from '../../AddMediaForm/AddMediaForm';
 import './AddMediaPage.css'
 import Helpers from '../../Utils/Helpers';
 
-class AddMedia extends Component {
+class AddMediaPage extends Component {
   state = {
     movieValid: false,
     tvValid: false,
@@ -271,4 +271,4 @@ class AddMedia extends Component {
   }
 }
 
-export default AddMedia;
+export default AddMediaPage;
