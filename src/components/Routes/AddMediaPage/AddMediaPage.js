@@ -27,6 +27,7 @@ class AddMediaPage extends Component {
     episodesLoaded: false,
     selectedSeason: null,
     selectedEpisode: [],
+    selectAllEpisodes: false,
     date: Helpers.getNow(),
     recommendation: 'recommend'
   }
@@ -38,7 +39,7 @@ class AddMediaPage extends Component {
       seasonsLoaded: false,
       episodesLoaded: false,
       selectedSeason: null,
-      selectedEpisode: null
+      selectedEpisode: null || []
     })
   }
 
@@ -80,9 +81,20 @@ class AddMediaPage extends Component {
   }
 
   updateMovieSelection = (movie) => {
-    this.setState({
-      movie: JSON.parse(movie)
-    }, this.validateMovie)
+    let movieObj = JSON.parse(movie)
+    console.log(movieObj)
+    let movieArr = this.state.movie
+    if (movieArr.filter(item => item.id === movieObj.id).length === 0) {
+      movieArr.push(movieObj)
+      console.log(movieArr)
+      this.setState({
+        movie: movieArr
+      }, this.validateMovie)
+    } else {
+      this.setState({
+        movie: movieArr.filter(item => item.id !== movieObj.id)
+      }, this.validateMovie)
+    }
   }
 
   updateTvSelection = (show) => {
@@ -93,9 +105,18 @@ class AddMediaPage extends Component {
   }
 
   updateEpisodeSelection = (episode) => {
-    this.setState({
-      selectedEpisode: JSON.parse(episode)
-    }, this.validateTv)
+    let episodeObj = JSON.parse(episode);
+    let episodeArr = this.state.selectedEpisode;
+    if (episodeArr.filter(item => item.id === episodeObj.id).length === 0) {
+      episodeArr.push(episodeObj)
+      this.setState({
+        selectedEpisode: episodeArr
+      }, this.validateTv)
+    } else {
+      this.setState({
+        selectedEpisode: episodeArr.filter(item => item.id !== episodeObj.id)
+      }, this.validateTv)
+    }
   }
 
   updateRecommendation = (e) => {
@@ -171,37 +192,41 @@ class AddMediaPage extends Component {
   handleAdd = (e) => {
     e.preventDefault()
     if (this.state.endpoint === 'tv') {
-      const show = {
-        media_type: 'tv',
-        title: this.state.show.name,
-        image: this.state.show.image,
-        url: this.state.show.url,
-        season: this.state.selectedSeason,
-        episode_number: this.state.selectedEpisode.episode_number,
-        episode_name: this.state.selectedEpisode.episode_name,
-        date_watched: this.state.date,
-        recommendation: this.state.recommendation
-      }
-      Service.addMedia(show);
-      setTimeout(() => {
-        this.props.history.push('/watch_list/')
-      }, 500) 
+      this.state.selectedEpisode.forEach(episode => {
+        const show = {
+          media_type: 'tv',
+          title: this.state.show.name,
+          image: this.state.show.image,
+          url: this.state.show.url,
+          season: this.state.selectedSeason,
+          episode_number: episode.episode_number,
+          episode_name: episode.episode_name,
+          date_watched: this.state.date,
+          recommendation: this.state.recommendation
+        }
+        Service.addMedia(show);
+        setTimeout(() => {
+          this.props.history.push('/watch_list/')
+        }, 500) 
+      })
     }
 
     if (this.state.endpoint === 'movie') {
-      const movie = {
-        media_type: 'movie',
-        title: this.state.movie.title,
-        image: this.state.movie.image,
-        url: this.state.movie.url,
-        date_watched: this.state.date,
-        recommendation: this.state.recommendation
+      this.state.movie.forEach(film => {
+        const movie = {
+          media_type: 'movie',
+          title: film.title,
+          image: film.image,
+          url: film.url,
+          date_watched: this.state.date,
+          recommendation: this.state.recommendation
+        }
+        Service.addMedia(movie);
+        setTimeout(() => {
+          this.props.history.push('/watch_list/')
+        }, 500) 
+      })
       }
-      Service.addMedia(movie);
-      setTimeout(() => {
-        this.props.history.push('/watch_list/')
-      }, 500) 
-    }
   }
 
   render() {
@@ -252,8 +277,9 @@ class AddMediaPage extends Component {
         {(this.state.episodesLoaded && !this.state.isLoaded) &&
           <div className="add_episode_display">
             <EpisodeResults
-              episodes={this.state.episodes} 
-              updateEpisodeSelection={this.updateEpisodeSelection} />
+              episodes={this.state.episodes}
+              updateEpisodeSelection={this.updateEpisodeSelection}
+              />
             <AddMediaForm 
               updateRecommendation={this.updateRecommendation} 
               handleAdd={this.handleAdd} 

@@ -46,10 +46,9 @@
 }
 
 .add_movie_display, .add_episode_display {
-  justify-content: center;
-  max-width: 1024px;
-  width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search_form {
@@ -175,7 +174,7 @@
     height: 100%;
   }
 
-  .add_movie_display {
+  .add_movie_display, .add_episode_display {
     display: block;
   }
 

@@ -62,7 +62,8 @@ export function WatchedMovie(props) {
           </div>
         </a>
       </div>
-      <div className="delete_actions"> 
+      <div className="delete_actions">
+        Bulk Delete: <input type="checkbox" name="media_watched" value={movie.id} onChange={props.selectItems} />
         <button onClick={() => props.delete(movie.id)} aria-label={`delete selected media`}>Delete</button>
       </div>
     </li>
@@ -83,13 +84,15 @@ export function WatchedShow(props) {
           <a className='result_url' href={show.url}>
             <h3>{show.title}</h3>
             <p><span className="bold">Season:</span> {show.season}</p>
+            <p><span className="bold">Episode:</span> {show.episode_number}</p>
             <p><span className="bold">Episode Title: </span>{show.episode_name}</p>
             <p><span className="bold">Date Watched:</span> {moment(show.date_watched).format('ll')}</p>
             <p><span className="bold">Recommendation:</span> {show.recommendation}</p>
           </a>
         </div>
       </div>
-      <div className="delete_actions">  
+      <div className="delete_actions">
+        Bulk Delete: <input type="checkbox" name="media_watched" value={show.id} onChange={props.selectItems} />
         <button onClick={() => props.delete(show.id)} aria-label={`delete selected media`}>Delete</button>
       </div>
     </li>
@@ -129,6 +132,24 @@ export function DeleteModal(props) {
     >
     <div>
       <h1>Are you sure you want to delete this item?</h1>
+      <button onClick={() => props.handleDelete()}>Yes</button>
+      <button onClick={() => props.closeModal()}>Cancel</button>
+    </div>
+    </Modal>
+  </section>
+}
+
+export function BulkDeleteModal(props) {
+  return <section className="logout_modal">
+    <Modal 
+      visible={props.visible}
+      width="400"
+      height="300"
+      effect="fadeInUp"
+      onClickAway={() => props.closeModal()}
+    >
+    <div>
+      <h1>Are you sure you want to delete the selected items?</h1>
       <button onClick={() => props.handleDelete()}>Yes</button>
       <button onClick={() => props.closeModal()}>Cancel</button>
     </div>

@@ -27,7 +27,8 @@
     margin: 10px 10px;
   }
 
-  .search_results_ul {
+  .add_movie_display .search_results_ul {
+    width: 375px;
     overflow-y: scroll;
     height: 265px;
   }

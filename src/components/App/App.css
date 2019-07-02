@@ -29,7 +29,7 @@ input {
   margin-bottom: 5px;
 }
 
-.button:hover:enabled, .button:hover {
+.button:hover:enabled {
   padding: 10px;
   color: #fff;
   background-color: #E54E45;

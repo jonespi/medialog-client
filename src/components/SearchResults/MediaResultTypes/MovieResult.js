@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function MovieResult(props) {
     const movie = {
+      "id": props.result.id,
       "title": props.result.title,
       "url": `https://themoviedb.org/movie/${props.result.id}`,
       "image": `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${props.result.poster_path}`
@@ -16,7 +17,7 @@ export default function MovieResult(props) {
         <label htmlFor={`movie_${props.result.id}`}> 
           <img className='result_img' src={movie.image} alt={`${movie.title} poster`} />
           <br />
-          <input name="movies" value={JSON.stringify(movie)} type="radio" id={`movie_${props.result.id}`} required onChange={e => props.change(e.target.value)}  />
+          <input name="movies" value={JSON.stringify(movie)} type="checkbox" id={`movie_${props.result.id}`} required onChange={e => props.change(e.target.value)}  />
           {movie.title}
         </label>
       </li>

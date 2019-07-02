@@ -14,7 +14,7 @@ export default function EpisodeResults(props) {
               return (
                   <li key={result.id}>
                     <label htmlFor={`episode_${result.id}`}>
-                    <input name="episode" value={JSON.stringify(episode)} type="radio" id={`episode_${result.id}`} onChange={e => props.updateEpisodeSelection(e.target.value)} required />
+                    <input name="episode" value={JSON.stringify(episode)} type="checkbox" id={`episode_${result.id}`} onChange={(e) => props.updateEpisodeSelection(e.target.value)} />
                       {episode.episode_name}
                     </label>
                   </li>

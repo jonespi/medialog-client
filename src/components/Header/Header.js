@@ -21,8 +21,7 @@ class Header extends Component {
         <Link className="button" to='/watch_list'>
           Watch List
         </Link>
-        <Link
-          className="button"
+        <Link className="button"
           onClick={this.handleLogoutClick}>
             Logout
         </Link>
