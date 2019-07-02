@@ -5,12 +5,10 @@ import './Header.css'
 
 class Header extends Component {
   static defaultProps = {
-    history: {
-      push: () => {}
-    }
+    openModal: () => {}
   }
 
-  handleLogoutClick = (e) => {
+  handleLogoutClick = () => {
     this.props.openModal();
   }
 
@@ -25,8 +23,7 @@ class Header extends Component {
         </Link>
         <Link
           className="button"
-          onClick={this.handleLogoutClick}
-          to='/'>
+          onClick={this.handleLogoutClick}>
             Logout
         </Link>
       </nav>
