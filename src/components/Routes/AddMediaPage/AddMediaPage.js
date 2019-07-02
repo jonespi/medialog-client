@@ -19,14 +19,14 @@ class AddMediaPage extends Component {
     results: [],
     searched: false,
     noResults: false,
-    movie: {},
+    movie: [],
     show: {},
     num_of_seasons: null,
     seasonsLoaded: false,
     episodes: [],
     episodesLoaded: false,
     selectedSeason: null,
-    selectedEpisode: null,
+    selectedEpisode: [],
     date: Helpers.getNow(),
     recommendation: 'recommend'
   }
@@ -44,6 +44,7 @@ class AddMediaPage extends Component {
 
   handleSearch = ev => {
     ev.preventDefault()
+    this.resetState()
     const { add_search, media_type } = ev.target
     MovieDBService.getMedia(add_search.value, media_type.value)
       .then(res => {
@@ -242,28 +243,25 @@ class AddMediaPage extends Component {
           </div>
         }
 
-        {this.state.seasonsLoaded &&
+        {this.state.showIsValid &&
           <div className="season_buttons">
             {this.renderSeasonButtons(this.state.num_of_seasons)}
           </div>
         }
 
-        {this.state.episodesLoaded && 
-          <>
+        {(this.state.episodesLoaded && !this.state.isLoaded) &&
+          <div className="add_episode_display">
             <EpisodeResults
               episodes={this.state.episodes} 
               updateEpisodeSelection={this.updateEpisodeSelection} />
-          </>
-        }
-
-        {(this.state.episodesLoaded && !this.state.isLoaded) && 
-          <AddMediaForm 
-            updateRecommendation={this.updateRecommendation} 
-            handleAdd={this.handleAdd} 
-            isValid={this.state.tvValid}
-            date={this.state.date}
-            updateDate={this.updateDate}
-          />
+            <AddMediaForm 
+              updateRecommendation={this.updateRecommendation} 
+              handleAdd={this.handleAdd} 
+              isValid={this.state.tvValid}
+              date={this.state.date}
+              updateDate={this.updateDate}
+            />
+          </div>
         }
 
       </section>

@@ -11,15 +11,7 @@ class Header extends Component {
   }
 
   handleLogoutClick = (e) => {
-    const { history } = this.props
-
-    e.preventDefault();
-    if (window.confirm('Are you sure you want to log out?')) {
-      TokenService.clearAuthToken()
-      history.push('/')
-      this.forceUpdate();
-    }
-    // component is consistent in App. Needs to reload when log out is confirmed
+    this.props.openModal();
   }
 
   renderLogoutLink() {

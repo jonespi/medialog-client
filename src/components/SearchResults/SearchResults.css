@@ -1,9 +1,6 @@
 .search_results_ul {
-  width: 90%;
   padding: 0;
   font-size: .75rem;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -11,17 +8,14 @@
   list-style-type: none;
 }
 
-.movie_result {
+.movie_result, .tv_result {
   margin: 10px 15px;
+  max-width: 125px;
 }
 
 .result_img {
   width: 125px;
   border-radius: 5px;
-}
-
-.movie_result {
-  max-width: 125px;
 }
 
 @media only screen and (max-width: 425px) {

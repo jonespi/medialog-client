@@ -10,10 +10,6 @@
 
 .add_media_form {
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 550px;
-  max-width: 90%;
 }
 
 .add_media_form button {
@@ -45,12 +41,15 @@
 
 .search_results_ul {
   height: 400px;
+  width: 65%;
   overflow: scroll;
 }
 
-.add_movie_display {
+.add_movie_display, .add_episode_display {
+  justify-content: center;
+  max-width: 1024px;
+  width: 100%;
   display: flex;
-  align-items: center;
 }
 
 .search_form {
@@ -124,7 +123,22 @@
 }
 
 .select_show_form {
-  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1024px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.select_season_box {
+  align-self: flex-start
+}
+
+.select_show_form .search_results_ul {
+  height: 300px;
+  width: 50%;
 }
 
 .select_show_form button:hover:enabled {

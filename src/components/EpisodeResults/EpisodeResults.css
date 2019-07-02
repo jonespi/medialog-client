@@ -1,6 +1,13 @@
 .episode_results__ul {
   margin-left: auto;
   margin-right: auto;
+}
+
+.episode_results__ul li {
+  text-align: left;
+}
+
+.episode_results__ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -9,10 +16,7 @@
   padding: 0;
   list-style-type: none;
   max-height: 300px;
-}
-
-.episode_results__ul li {
-  align-self: center;
+  align-items: flex-start
 }
 
 @media only screen and (max-width: 425px) {

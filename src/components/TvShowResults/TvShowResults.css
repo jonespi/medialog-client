@@ -1,8 +1,6 @@
 .search_results_ul {
   padding: 0;
   width: 90%;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

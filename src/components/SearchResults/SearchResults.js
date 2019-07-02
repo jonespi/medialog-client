@@ -6,6 +6,7 @@ import './SearchResults.css'
 export default class SearchResults extends Component {
   static defaultProps = {
     results: [],
+    change: () => {},
   }
 
   render() {    

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import Service from '../../Service/Service'
 import {WatchedMovie, WatchedShow} from '../../Utils/Utils'
-import {EmptyWatchList} from  '../../Utils/Utils'
+import {EmptyWatchList, DeleteModal} from  '../../Utils/Utils'
 import './WatchedPage.css'
 
 export default class WatchedPage extends Component {
   state = {
     isLoaded: false,
     isFiltered: false,
+    modalVisible: false,
+    selectedMedia: [],
     results: [],
     tvResults: [],
     movieResults: [],
@@ -35,13 +37,40 @@ export default class WatchedPage extends Component {
       .catch(err => console.log(err.error))
   }
 
-  deleteMedia = (id) => {
-    if (window.confirm('Are you sure you wish to delete this item?')) {
-      Service.deleteMedia(id)
-      .then(() => {
-        this.getResults()
+  deleteMedia = () => {
+    Service.deleteMedia(this.state.mediaId)
+    .then(() => {
+      this.getResults()
+      this.setState({
+        modalVisible: false
+      })
+    })
+  }
+
+  addCheck = (e) => {
+    if (!this.state.selectedMedia) {
+      this.setState({
+        selectedMedia: [e.target.value],
+      })
+    } else {
+      let newArr = this.state.selectedMedia.concat(e.target.value)
+      this.setState({
+        selectedMedia: newArr
       })
     }
+  }
+
+  openModal = (id) => {
+    this.setState({
+      mediaId: id,
+      modalVisible: true,
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      modalVisible: false
+    })
   }
 
   filterMediaType = (e) => {
@@ -120,41 +149,48 @@ export default class WatchedPage extends Component {
           {!this.state.isFiltered && this.state.results.map(media => {
             if (media.media_type === 'movie') { 
               return (
-                <WatchedMovie key={media.id} movie={media} delete={this.deleteMedia}/>
+                <WatchedMovie key={media.id} movie={media} delete={this.openModal}addCheck={this.addCheck}/>
               )
             }
             if (media.media_type === 'tv') {
               return (
-                <WatchedShow key={media.id} show={media} delete={this.deleteMedia} />
+                <WatchedShow key={media.id} show={media} delete={this.openModal} addCheck={this.addCheck} />
               )
             }
             return ''
           })}
 
           {this.state.movieFiltered  && !this.state.filteredResults && this.state.movieResults.map(media => {
-              return <WatchedMovie key={media.id} movie={media} delete={this.deleteMedia}/>
+              return <WatchedMovie key={media.id} movie={media} delete={this.openModal} addCheck={this.addCheck}/>
             }
           )}
 
           {this.state.tvFiltered && !this.state.filteredResults && this.state.tvResults.map(media => {
-              return <WatchedShow key={media.id} show={media} delete={this.deleteMedia} />
+              return <WatchedShow key={media.id} show={media} delete={this.openModal} addCheck={this.addCheck}/>
             }
           )}
 
           {this.state.isFiltered && this.state.filteredResults && this.state.filteredResults.map(media => {
             if (media.media_type === 'movie') { 
               return (
-                <WatchedMovie key={media.id} movie={media} delete={this.deleteMedia}/>
+                <WatchedMovie key={media.id} movie={media} delete={this.openModal}addCheck={this.addCheck} />
               )
             }
             if (media.media_type === 'tv') {
               return (
-                <WatchedShow key={media.id} show={media} delete={this.deleteMedia} />
+                <WatchedShow key={media.id} show={media} delete={this.openModal} addCheck={this.addCheck}/>
               )
             }
             return ''
           })}
         </ul>
+
+        <DeleteModal
+          visible={this.state.modalVisible}
+          openModal={this.openModal}
+          closeModal={this.closeModal}
+          handleDelete={this.deleteMedia}
+          />
       </section>
     )
   }

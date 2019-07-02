@@ -13,7 +13,7 @@ export default function TvResult(props) {
   }
 
   return (
-    <li className="movie_result">
+    <li className="tv_result">
       <label htmlFor={`show${props.result.id}`}> 
         <img className='result_img' src={show.image} alt={`${show.name} poster`} />
         <br />
