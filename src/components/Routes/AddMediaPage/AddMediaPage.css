@@ -10,6 +10,7 @@
 
 .add_media_form {
   text-align: center;
+  align-self: baseline;
 }
 
 .add_media_form button {
