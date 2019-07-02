@@ -53,17 +53,21 @@ export function WatchedMovie(props) {
   return (
     <li key={movie.id} className="watch_page_li">
       <div className="image_overlay">
-        <a href={movie.url}>
+        
           <img className='result_img' src={movie.image} alt={`${movie.title} poster`} />
-          <div className='overlay'>
-              <h3>{movie.title}</h3>
-            <p><span className="bold">Date Watched:</span> {moment(movie.date_watched).format('ll')}</p>
-            <p><span className="bold">Recommendation:</span> {movie.recommendation}</p> 
-          </div>
-        </a>
+          <a href={movie.url}>
+            <div className='overlay'>
+                <h3>{movie.title}</h3>
+              <p><span className="bold">Date Watched:</span> {moment(movie.date_watched).format('ll')}</p>
+              <p><span className="bold">Recommendation:</span> {movie.recommendation}</p> 
+            </div>
+          </a>
       </div>
       <div className="delete_actions">
-        Bulk Delete: <input type="checkbox" name="media_watched" value={movie.id} onChange={props.selectItems} />
+        <label className="checkbox">
+          Select:
+          <input type="checkbox" name="media_watched" value={movie.id} onChange={props.selectItems} />
+        </label>
         <button onClick={() => props.delete(movie.id)} aria-label={`delete selected media`}>Delete</button>
       </div>
     </li>
@@ -92,7 +96,10 @@ export function WatchedShow(props) {
         </div>
       </div>
       <div className="delete_actions">
-        Bulk Delete: <input type="checkbox" name="media_watched" value={show.id} onChange={props.selectItems} />
+        <label className="checkbox">
+          Select:
+          <input type="checkbox" name="media_watched" value={show.id} onChange={props.selectItems} />
+        </label>
         <button onClick={() => props.delete(show.id)} aria-label={`delete selected media`}>Delete</button>
       </div>
     </li>
@@ -108,11 +115,11 @@ export function LogoutModal(props) {
     <Modal 
       visible={props.visible}
       width="400"
-      height="300"
+      height="175"
       effect="fadeInUp"
       onClickAway={() => props.closeModal()}
     >
-    <div>
+    <div className="modal_dialog">
       <h1>Are you sure you want to log out?</h1>
       <button onClick={() => props.handleLogout()}>Yes</button>
       <button onClick={() => props.closeModal()}>Cancel</button>
@@ -126,11 +133,11 @@ export function DeleteModal(props) {
     <Modal 
       visible={props.visible}
       width="400"
-      height="300"
+      height="165"
       effect="fadeInUp"
       onClickAway={() => props.closeModal()}
     >
-    <div>
+    <div className="modal_dialog">
       <h1>Are you sure you want to delete this item?</h1>
       <button onClick={() => props.handleDelete()}>Yes</button>
       <button onClick={() => props.closeModal()}>Cancel</button>
@@ -144,11 +151,11 @@ export function BulkDeleteModal(props) {
     <Modal 
       visible={props.visible}
       width="400"
-      height="300"
+      height="165"
       effect="fadeInUp"
       onClickAway={() => props.closeModal()}
     >
-    <div>
+    <div className="modal_dialog">
       <h1>Are you sure you want to delete the selected items?</h1>
       <button onClick={() => props.handleDelete()}>Yes</button>
       <button onClick={() => props.closeModal()}>Cancel</button>

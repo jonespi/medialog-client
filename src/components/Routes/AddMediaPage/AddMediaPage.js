@@ -39,7 +39,8 @@ class AddMediaPage extends Component {
       seasonsLoaded: false,
       episodesLoaded: false,
       selectedSeason: null,
-      selectedEpisode: null || []
+      selectedEpisode: null || [],
+      showIsValid: false
     })
   }
 

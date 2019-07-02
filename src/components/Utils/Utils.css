@@ -4,6 +4,29 @@
   margin-right: auto;
 }
 
+.modal_dialog {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
 .watch_page_li button {
   margin-top: 5px;
+}
+
+.delete_actions {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 125px;
+  max-width: 90%;
+}
+
+.checkbox {
+  margin-top: 5.5px;
+  margin-right: 5px;
+  font-size: .6rem;
 }

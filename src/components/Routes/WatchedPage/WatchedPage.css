@@ -101,6 +101,7 @@
   margin-right: auto;
   margin-top: -125%;
   text-align: center;
+  overflow: scroll;
 }
 
 .image_overlay:hover .result_img {
