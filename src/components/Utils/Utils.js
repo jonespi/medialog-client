@@ -57,7 +57,7 @@ export function WatchedMovie(props) {
           <img className='result_img' src={movie.image} alt={`${movie.title} poster`} />
           <a href={movie.url}>
             <div className='overlay'>
-                <h3>{movie.title}</h3>
+              <h3>{movie.title}</h3>
               <p><span className="bold">Date Watched:</span> {moment(movie.date_watched).format('ll')}</p>
               <p><span className="bold">Recommendation:</span> {movie.recommendation}</p> 
             </div>

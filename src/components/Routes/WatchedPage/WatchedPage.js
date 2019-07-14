@@ -25,7 +25,9 @@ export default class WatchedPage extends Component {
   getResults = () => {
     Service.getWatchList()
       .then(res => {
+        res.forEach(item => item.isChecked = false);
         this.setState({
+          allChecked: false,
           results: res.sort((a, b) => b.id - a.id)
         })
       })
@@ -55,7 +57,8 @@ export default class WatchedPage extends Component {
       .then(() => {
         this.getResults()
         this.setState({
-          bulkModalVisible: false
+          bulkModalVisible: false,
+          selectedMedia: []
         })
       })
     })
@@ -167,7 +170,7 @@ export default class WatchedPage extends Component {
         <div className="watch_page__select_filters">
           <p>Type: {this.renderTypeSelect(this.state.results)}</p>
           <p>Search: <input type="text" className="input" onChange={this.handleSearch} /></p>
-          
+
           {this.state.selectedMedia.length > 0 && 
             <button className="button" 
             onClick={this.bulkOpenModal} 
@@ -188,7 +191,8 @@ export default class WatchedPage extends Component {
                   key={media.id}
                   movie={media} 
                   delete={this.openModal}
-                  selectItems={this.selectItems}/>
+                  selectItems={this.selectItems} 
+                  selectAll={this.selectAll}/>
               )
             }
             if (media.media_type === 'tv') {
@@ -197,31 +201,32 @@ export default class WatchedPage extends Component {
                   key={media.id} 
                   show={media} 
                   delete={this.openModal} 
-                  selectItems={this.selectItems} />
+                  selectItems={this.selectItems} 
+                  selectAll={this.selectAll} />
               )
             }
             return ''
           })}
 
           {this.state.movieFiltered  && !this.state.filteredResults && this.state.movieResults.map(media => {
-              return <WatchedMovie key={media.id} movie={media} delete={this.openModal} selectItems={this.selectItems}/>
+              return <WatchedMovie key={media.id} movie={media} delete={this.openModal} selectItems={this.selectItems} selectAll={this.selectAll}/>
             }
           )}
 
           {this.state.tvFiltered && !this.state.filteredResults && this.state.tvResults.map(media => {
-              return <WatchedShow key={media.id} show={media} delete={this.openModal} selectItems={this.selectItems}/>
+              return <WatchedShow key={media.id} show={media} delete={this.openModal} selectItems={this.selectItems} selectAll={this.selectAll}/>
             }
           )}
 
           {this.state.isFiltered && this.state.filteredResults && this.state.filteredResults.map(media => {
             if (media.media_type === 'movie') { 
               return (
-                <WatchedMovie key={media.id} movie={media} delete={this.openModal}selectItems={this.selectItems} />
+                <WatchedMovie key={media.id} movie={media} delete={this.openModal}selectItems={this.selectItems} selectAll={this.selectAll}/>
               )
             }
             if (media.media_type === 'tv') {
               return (
-                <WatchedShow key={media.id} show={media} delete={this.openModal} selectItems={this.selectItems}/>
+                <WatchedShow key={media.id} show={media} delete={this.openModal} selectItems={this.selectItems} selectAll={this.selectAll}/>
               )
             }
             return ''

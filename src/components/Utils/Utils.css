@@ -30,3 +30,9 @@
   margin-right: 5px;
   font-size: .6rem;
 }
+
+.media_watched:checked {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
